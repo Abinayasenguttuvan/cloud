@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Cloud Services</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    min-height:200vh;
+    background:#050505;
+}
+
+/* HEADER */
+.stkhd-header{
+    position:sticky;
+    top:0;
+    width:100%;
+    z-index:9999;
+    background:rgba(8,8,8,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,255,136,.15);
+}
+
+.stkhd-container{
+    width:100%;
+    padding:16px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.stkhd-logo{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    gap:12px;
+}
+
+.stkhd-logo img{
+    height:55px;
+    display:block;
+}
+
+.stkhd-logo-text{
+    color:#00ff88;
+    font-size:28px;
+    font-weight:800;
+}
+
+/* NAV */
+.stkhd-nav{
+    display:flex;
+    align-items:center;
+    gap:32px;
+}
+
+.stkhd-nav a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+    position:relative;
+}
+
+.stkhd-nav a:hover,
+.stkhd-nav a.active{
+    color:#00ff88;
+}
+
+.stkhd-nav a.active::after,
+.stkhd-nav a:hover::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:100%;
+    height:2px;
+    background:#00ff88;
+}
+
+/* BUTTON */
+.stkhd-btn{
+    background:#00ff88;
+    color:#000 !important;
+    padding:14px 26px;
+    border-radius:50px;
+    font-weight:700;
+}
+
+.stkhd-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(0,255,136,.3);
+}
+
+/* HAMBURGER */
+.stkhd-menu-btn,
+.stkhd-close-btn{
+    display:none;
+    color:#fff;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* OVERLAY */
+.stkhd-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:9998;
+}
+
+.stkhd-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .stkhd-nav{
+        gap:22px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .stkhd-nav{
+        gap:16px;
+    }
+
+    .stkhd-btn{
+        padding:12px 18px;
+        font-size:14px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .stkhd-menu-btn{
+        display:block;
+    }
+
+    .stkhd-nav{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:300px;
+        height:100vh;
+        background:#0b0b0b;
+        border-left:1px solid rgba(0,255,136,.2);
+        flex-direction:column;
+        justify-content:center;
+        gap:30px;
+        transition:.45s ease;
+        z-index:9999;
+    }
+
+    .stkhd-nav.active{
+        right:0;
+    }
+
+    .stkhd-close-btn{
+        display:block;
+        position:absolute;
+        top:25px;
+        right:25px;
+    }
+
+    .stkhd-nav a{
+        font-size:20px;
+    }
+
+    .stkhd-btn{
+        margin-top:10px;
+    }
+
+    .stkhd-logo img{
+        height:46px;
+    }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+    .stkhd-nav{
+        width:85%;
+    }
+
+    .stkhd-logo-text{
+        font-size:22px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="stkhd-overlay" id="stkhdOverlay" onclick="stkhdCloseMenu()"></div>
+
+<header class="stkhd-header">
+    <div class="stkhd-container">
+
+        <!-- Logo -->
+        <a href="./index.html" class="stkhd-logo">
+            <img src="./white.webp" alt="Stackly Logo"
+            style="filter:brightness(0) saturate(100%) invert(73%) sepia(94%) saturate(2874%) hue-rotate(92deg) brightness(103%) contrast(105%);">
+        </a>
+
+        <!-- Hamburger -->
+        <div class="stkhd-menu-btn" onclick="stkhdOpenMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- Nav -->
+        <nav class="stkhd-nav" id="stkhdNav">
+
+            <div class="stkhd-close-btn" onclick="stkhdCloseMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <a href="./index.html" >Home</a>
+            <a href="./about.html">About Us</a>
+            <a href="./blog.html">Blog</a>
+            <a href="./contact.html" class="active" >Contact Us</a>
+            <a href="./login.html" class="stkhd-btn">Login / Register</a>
+        </nav>
+
+    </div>
+</header>
+
+<script>
+const navLinks=document.querySelectorAll(".stkhd-nav a");
+
+navLinks.forEach(link=>{
+    link.addEventListener("click",function(){
+        navLinks.forEach(item=>item.classList.remove("active"));
+        this.classList.add("active");
+        stkhdCloseMenu();
+    });
+});
+
+function stkhdOpenMenu(){
+    document.getElementById("stkhdNav").classList.add("active");
+    document.getElementById("stkhdOverlay").classList.add("show");
+}
+
+function stkhdCloseMenu(){
+    document.getElementById("stkhdNav").classList.remove("active");
+    document.getElementById("stkhdOverlay").classList.remove("show");
+}
+</script>
+
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#000;
+    color:white;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,20,10,.82)),
+    url('./cloud 1.webp');
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,255,120,0.05);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    padding:20px;
+}
+
+.hero-badge{
+    color:#55ff88;
+    font-weight:600;
+    font-size:18px;
+}
+
+.hero-title{
+    font-size:64px;
+    margin:20px 0;
+}
+
+.hero-tagline{
+    color:#d6d6d6;
+    font-size:20px;
+}
+
+/* CONTACT */
+.contact-section{
+    padding:100px 6%;
+    background:linear-gradient(135deg,#000,#06150d,#000);
+}
+
+.contact-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+}
+
+/* LEFT */
+.section-number{
+    color:#55ff88;
+    font-size:20px;
+}
+
+.section-title{
+    font-size:52px;
+    margin:15px 0;
+}
+
+.contact-description{
+    color:#bbb;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.contact-item{
+    display:flex;
+    gap:20px;
+    margin-bottom:25px;
+    align-items:flex-start;
+}
+
+.contact-icon{
+    width:55px;
+    height:55px;
+    background:#55ff88;
+    color:black;
+    border-radius:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.contact-details h4{
+    margin-bottom:8px;
+}
+
+.contact-details p{
+    color:#bbb;
+}
+
+/* MAP */
+.map-box{
+    margin-top:40px;
+    border:2px solid #55ff88;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.map-box iframe{
+    width:100%;
+    height:280px;
+    border:none;
+}
+
+/* FORM */
+.contact-form-wrapper{
+    background:#111;
+    padding:40px;
+    border-radius:25px;
+    border:1px solid rgba(85,255,136,0.2);
+}
+
+.form-header h3{
+    font-size:32px;
+    color:#55ff88;
+}
+
+.form-header p{
+    color:#bbb;
+    margin:10px 0 30px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:10px;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:16px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:#1d1d1d;
+    color:white;
+}
+
+.submit-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    cursor:pointer;
+    border-radius:14px;
+    background:#55ff88;
+    color:black;
+    font-size:18px;
+    font-weight:700;
+}
+
+.form-error{
+    margin-top:15px;
+    color:red;
+    font-weight:600;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+    .hero-title{
+        font-size:46px;
+    }
+}
+
+@media(max-width:768px){
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .hero-title{
+        font-size:34px;
+    }
+
+    .section-title{
+        font-size:36px;
+    }
+
+    .contact-form-wrapper{
+        padding:25px;
+    }
+}
+
+@media(max-width:480px){
+    .hero{
+        height:55vh;
+    }
+
+    .hero-tagline{
+        font-size:16px;
+    }
+
+    .contact-section{
+        padding:70px 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <span class="hero-badge">Get in Touch</span>
+        <h1 class="hero-title">Contact Cloud Services</h1>
+        <p class="hero-tagline">
+            Reach our cloud experts for hosting, migration & support
+        </p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+<div class="contact-container">
+
+<div>
+    <span class="section-number">Contact</span>
+    <h2 class="section-title">Reach Our Experts</h2>
+
+    <p class="contact-description">
+        Whether you need cloud migration, infrastructure support,
+        security consulting, or managed hosting, our team is here.
+    </p>
+
+    <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-details">
+            <h4>Address</h4>
+            <p>Salem, Tamil Nadu</p>
+        </div>
+    </div>
+
+    <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+        <div class="contact-details">
+            <h4>Phone</h4>
+            <p>+91 9876543210</p>
+        </div>
+    </div>
+
+    <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-details">
+            <h4>Email</h4>
+            <p>support@stackly.com</p>
+        </div>
+    </div>
+
+    <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+        <div class="contact-details">
+            <h4>Availability</h4>
+            <p>24 / 7 Support</p>
+        </div>
+    </div>
+
+    <div class="map-box">
+        <iframe src="https://maps.google.com/maps?q=salem&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+</div>
+
+<div class="contact-form-wrapper">
+    <div class="form-header">
+        <h3>Send Message</h3>
+        <p>Our team will respond shortly</p>
+    </div>
+
+    <form id="contactForm">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" id="firstName">
+            </div>
+
+            <div class="form-group">
+                <label>Last Name *</label>
+                <input type="text" id="lastName">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="email">
+            </div>
+
+            <div class="form-group">
+                <label>Phone *</label>
+                <input type="text" id="phone">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Subject *</label>
+            <select id="subject">
+                <option value="">Select</option>
+                <option>Cloud Hosting</option>
+                <option>Migration</option>
+                <option>Security</option>
+                <option>Support</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Message *</label>
+            <textarea rows="5" id="message"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Send Message
+        </button>
+
+        <p id="formError" class="form-error"></p>
+    </form>
+</div>
+
+</div>
+</section>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit",function(e){
+    e.preventDefault();
+
+    let first=document.getElementById("firstName").value.trim();
+    let last=document.getElementById("lastName").value.trim();
+    let email=document.getElementById("email").value.trim();
+    let phone=document.getElementById("phone").value.trim();
+    let subject=document.getElementById("subject").value.trim();
+    let message=document.getElementById("message").value.trim();
+    let error=document.getElementById("formError");
+
+    let emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    let phonePattern=/^[0-9]{10}$/;
+
+    if(
+        first==="" ||
+        last==="" ||
+        !emailPattern.test(email) ||
+        !phonePattern.test(phone) ||
+        subject==="" ||
+        message===""
+    ){
+        error.innerText="Please fill details correctly";
+        return;
+    }
+
+    window.location.href="404.html";
+});
+</script>
+
+
+<footer class="rstfooter-section">
+
+    <div class="rstfooter-container">
+
+        <!-- Column 1 -->
+        <div class="rstfooter-col">
+            <a href="index.html" class="rstfooter-logo">
+                <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) saturate(2874%) hue-rotate(92deg) brightness(103%) contrast(105%);">
+    </a>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe, rerum!
+            </p>
+
+            <div class="rstfooter-social">
+                <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="./404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                <a href="./404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="rstfooter-col">
+            <h3>Working Hours</h3>
+
+            <ul class="rstfooter-hours">
+                <li><span>Mon - Fri</span><span>09:00 - 22:00</span></li>
+                <li><span>Saturday</span><span>11:00 - 00:00</span></li>
+                <li><span>Sunday</span><span>11:00 - 23:00</span></li>
+                <li><span>Happy Hour</span><span>17:00 - 21:00</span></li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="rstfooter-col">
+            <h3>Contact Us</h3>
+
+            <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> booking@thestackly.com</p>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="rstfooter-col">
+            <h3>Newsletter</h3>
+            <p>Receive latest updates from us.</p>
+
+            <form id="rstfooterForm">
+                <input type="email" id="rstfooterEmail" placeholder="Enter Email">
+                <button type="submit">Subscribe</button>
+            </form>
+
+            <small id="rstfooterMsg"></small>
+        </div>
+
+    </div>
+
+    <div class="rstfooter-bottom">
+        © 2026 Stackly services. All Rights Reserved.
+    </div>
+
+</footer>
+
+<style>
+    .rstfooter-section{
+    background:#111;
+    color:white;
+    padding:70px  20px;
+}
+
+.rstfooter-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
+}
+
+.rstfooter-col h3{
+    margin-bottom:25px;
+    color:#00ff88;
+}
+
+.rstfooter-col p{
+    color:#bbb;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.rstfooter-logo img{
+    width:160px;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+.rstfooter-social{
+    display:flex;
+    gap:15px;
+}
+
+.rstfooter-social a{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#222;
+    color:white;
+    text-decoration:none;
+    transition:.4s;
+}
+
+.rstfooter-social a:hover{
+    background:#00ff88;
+}
+
+.rstfooter-hours{
+    list-style:none;
+    padding:0;
+}
+
+.rstfooter-hours li{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    color:#bbb;
+}
+
+#rstfooterForm{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+#rstfooterForm input{
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+#rstfooterForm button{
+    padding:14px;
+    border:none;
+    background:#123e29;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+#rstfooterMsg{
+    display:block;
+    margin-top:10px;
+    color:#00ff88;
+}
+
+.rstfooter-bottom{
+    text-align:center;
+    border-top:1px solid #333;
+    margin-top:50px;
+    padding-top:20px;
+    color:#999;
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rstfooter-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rstfooter-container{
+        grid-template-columns:1fr;
+    }
+
+    .rstfooter-hours li{
+        flex-direction:column;
+        gap:5px;
+    }
+}
+</style>
+
+<script>
+    document.getElementById("rstfooterForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("rstfooterEmail").value.trim();
+    const msg = document.getElementById("rstfooterMsg");
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(emailPattern.test(email)){
+        msg.style.color = "#4CAF50";
+        msg.innerText = "Email verified ✓";
+
+        setTimeout(()=>{
+            window.location.href = "404.html";
+        },1500);
+    } else {
+        msg.style.color = "#ff7b7b";
+        msg.innerText = "Fill details correctly";
+    }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#050505,#062b18,#050505);
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding:20px;
+    position:relative;
+}
+
+/* Floating Icons */
+.r404-food{
+    position:absolute;
+    font-size:40px;
+    animation:r404float 6s infinite ease-in-out;
+    opacity:.25;
+}
+
+.food1{top:10%; left:12%;}
+.food2{top:18%; right:14%; animation-delay:1s;}
+.food3{bottom:16%; left:20%; animation-delay:2s;}
+.food4{bottom:10%; right:18%; animation-delay:3s;}
+
+@keyframes r404float{
+    0%,100%{transform:translateY(0px) rotate(0deg);}
+    50%{transform:translateY(-35px) rotate(12deg);}
+}
+
+/* Wrapper */
+.page-wrap{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px 0;
+}
+
+/* Main Card */
+.r404-box{
+    width:90%;
+    max-width:900px;
+    text-align:center;
+    padding:60px 40px;
+    border-radius:25px;
+    background:rgba(0,255,136,0.05);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(0,255,136,0.25);
+    box-shadow:0 0 30px rgba(0,255,136,0.08);
+    animation:r404fade 1.2s ease;
+}
+
+@keyframes r404fade{
+    from{
+        opacity:0;
+        transform:translateY(60px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.r404-number{
+    font-size:180px;
+    font-weight:900;
+    line-height:1;
+    color:#00ff88;
+    text-shadow:0 0 25px rgba(0,255,136,.45);
+    animation:r404bounce 2s infinite;
+}
+
+@keyframes r404bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+.r404-title{
+    font-size:48px;
+    color:white;
+    margin-top:10px;
+}
+
+.r404-text{
+    color:#d0d0d0;
+    font-size:20px;
+    line-height:1.8;
+    margin:25px auto 40px;
+    max-width:650px;
+}
+
+/* Buttons */
+.r404-btn-wrap{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.r404-btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:18px 38px;
+    background:#00ff88;
+    color:black;
+    font-weight:700;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    transition:.4s;
+    font-size:16px;
+}
+
+.r404-btn:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 0 30px rgba(0,255,136,.45);
+}
+
+/* Secondary Button */
+.r404-btn-secondary{
+    background:transparent;
+    border:2px solid #00ff88;
+    color:#00ff88;
+}
+
+.r404-btn-secondary:hover{
+    background:#00ff88;
+    color:black;
+}
+
+/* Laptop / Tablet */
+@media(max-width:992px){
+    .r404-number{
+        font-size:140px;
+    }
+
+    .r404-title{
+        font-size:36px;
+    }
+
+    .r404-text{
+        font-size:18px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    body{
+        padding:15px;
+    }
+
+    .r404-box{
+        width:100%;
+        padding:40px 20px;
+        margin-top:40px;
+        margin-bottom:40px;
+    }
+
+    .r404-number{
+        font-size:90px;
+    }
+
+    .r404-title{
+        font-size:28px;
+    }
+
+    .r404-text{
+        font-size:16px;
+    }
+
+    .r404-btn{
+        padding:15px 28px;
+        width:100%;
+        max-width:260px;
+    }
+
+    .r404-food{
+        font-size:28px;
+    }
+}
+.page-wrap{
+    min-height:calc(100vh + 100px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+/* Small Mobile */
+@media(max-width:480px){
+    .r404-number{
+        font-size:70px;
+    }
+
+    .r404-title{
+        font-size:22px;
+    }
+
+    .r404-text{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+    .r404-btn{
+        font-size:14px;
+        padding:14px 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="r404-food food1">☁️</div>
+<div class="r404-food food2">🖥️</div>
+<div class="r404-food food3">🌐</div>
+<div class="r404-food food4">⚡</div>
+
+<div class="page-wrap">
+    <div class="r404-box">
+        <div class="r404-number">404</div>
+
+        <h1 class="r404-title">Oops! Page Not Found</h1>
+
+        <p class="r404-text">
+            Looks like this cloud resource is unavailable.
+            Let’s take you back to the homepage and reconnect.
+        </p>
+
+        <div class="r404-btn-wrap">
+            <a href="index.html" class="r404-btn">Back To Home</a>
+
+            <button class="r404-btn r404-btn-secondary" onclick="goBack()">
+                Previous Page
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+function goBack(){
+    window.history.back();
+}
+</script>
+
+</body>
+</html>

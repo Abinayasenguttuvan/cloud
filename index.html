@@ -1,0 +1,3091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Cloud Services</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    min-height:200vh;
+    background:#050505;
+}
+
+/* HEADER */
+.stkhd-header{
+    position:sticky;
+    top:0;
+    width:100%;
+    z-index:9999;
+    background:rgba(8,8,8,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,255,136,.15);
+}
+
+.stkhd-container{
+    width:100%;
+    padding:16px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.stkhd-logo{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    gap:12px;
+}
+
+.stkhd-logo img{
+    height:55px;
+    display:block;
+}
+
+.stkhd-logo-text{
+    color:#00ff88;
+    font-size:28px;
+    font-weight:800;
+}
+
+/* NAV */
+.stkhd-nav{
+    display:flex;
+    align-items:center;
+    gap:32px;
+}
+
+.stkhd-nav a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+    position:relative;
+}
+
+.stkhd-nav a:hover,
+.stkhd-nav a.active{
+    color:#00ff88;
+}
+
+.stkhd-nav a.active::after,
+.stkhd-nav a:hover::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:100%;
+    height:2px;
+    background:#00ff88;
+}
+
+/* BUTTON */
+.stkhd-btn{
+    background:#00ff88;
+    color:#000 !important;
+    padding:14px 26px;
+    border-radius:50px;
+    font-weight:700;
+}
+
+.stkhd-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(0,255,136,.3);
+}
+
+/* HAMBURGER */
+.stkhd-menu-btn,
+.stkhd-close-btn{
+    display:none;
+    color:#fff;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* OVERLAY */
+.stkhd-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:9998;
+}
+
+.stkhd-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .stkhd-nav{
+        gap:22px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .stkhd-nav{
+        gap:16px;
+    }
+
+    .stkhd-btn{
+        padding:12px 18px;
+        font-size:14px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .stkhd-menu-btn{
+        display:block;
+    }
+
+    .stkhd-nav{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:300px;
+        height:100vh;
+        background:#0b0b0b;
+        border-left:1px solid rgba(0,255,136,.2);
+        flex-direction:column;
+        justify-content:center;
+        gap:30px;
+        transition:.45s ease;
+        z-index:9999;
+    }
+
+    .stkhd-nav.active{
+        right:0;
+    }
+
+    .stkhd-close-btn{
+        display:block;
+        position:absolute;
+        top:25px;
+        right:25px;
+    }
+
+    .stkhd-nav a{
+        font-size:20px;
+    }
+
+    .stkhd-btn{
+        margin-top:10px;
+    }
+
+    .stkhd-logo img{
+        height:46px;
+    }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+    .stkhd-nav{
+        width:85%;
+    }
+
+    .stkhd-logo-text{
+        font-size:22px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="stkhd-overlay" id="stkhdOverlay" onclick="stkhdCloseMenu()"></div>
+
+<header class="stkhd-header">
+    <div class="stkhd-container">
+
+        <!-- Logo -->
+        <a href="./index.html" class="stkhd-logo">
+            <img src="./white.webp" alt="Stackly Logo"
+            style="filter:brightness(0) saturate(100%) invert(73%) sepia(94%) saturate(2874%) hue-rotate(92deg) brightness(103%) contrast(105%);">
+        </a>
+
+        <!-- Hamburger -->
+        <div class="stkhd-menu-btn" onclick="stkhdOpenMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- Nav -->
+        <nav class="stkhd-nav" id="stkhdNav">
+
+            <div class="stkhd-close-btn" onclick="stkhdCloseMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <a href="./index.html" class="active">Home</a>
+            <a href="./about.html">About Us</a>
+            <a href="./blog.html">Blog</a>
+            <a href="./contact.html">Contact Us</a>
+            <a href="./login.html" class="stkhd-btn">Login / Register</a>
+        </nav>
+
+    </div>
+</header>
+
+<script>
+const navLinks=document.querySelectorAll(".stkhd-nav a");
+
+navLinks.forEach(link=>{
+    link.addEventListener("click",function(){
+        navLinks.forEach(item=>item.classList.remove("active"));
+        this.classList.add("active");
+        stkhdCloseMenu();
+    });
+});
+
+function stkhdOpenMenu(){
+    document.getElementById("stkhdNav").classList.add("active");
+    document.getElementById("stkhdOverlay").classList.add("show");
+}
+
+function stkhdCloseMenu(){
+    document.getElementById("stkhdNav").classList.remove("active");
+    document.getElementById("stkhdOverlay").classList.remove("show");
+}
+</script>
+
+
+
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:black;
+    color:white;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* VIDEO */
+.hero video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    min-width:100%;
+    min-height:100%;
+    transform:translate(-50%,-50%);
+    object-fit:cover;
+    z-index:-3;
+}
+
+/* DARK OVERLAY */
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        90deg,
+        rgba(0,0,0,0.9) 30%,
+        rgba(0,0,0,0.5) 60%,
+        rgba(0,0,0,0.85) 100%
+    );
+    z-index:-2;
+}
+
+/* GREEN GLOW */
+.hero::after{
+    content:"";
+    position:absolute;
+    right:10%;
+    top:20%;
+    width:350px;
+    height:350px;
+    background:#00ff88;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.25;
+    z-index:-1;
+}
+
+.hero-container{
+    width:90%;
+    max-width:1400px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+}
+
+/* LEFT CONTENT */
+.hero-left{
+    flex:1;
+}
+
+.hero-left h4{
+    color:#00ff88;
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+.hero-left h1{
+    font-size:4rem;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.hero-left span{
+    color:#00ff88;
+}
+
+.hero-left p{
+    font-size:1.2rem;
+    color:#ddd;
+    line-height:1.8;
+    margin-bottom:30px;
+    max-width:600px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 35px;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:bold;
+    transition:.4s;
+}
+
+.primary{
+    background:#00ff88;
+    color:black;
+}
+
+.primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 30px #00ff88;
+}
+
+.secondary{
+    border:2px solid #00ff88;
+    color:#00ff88;
+}
+
+.secondary:hover{
+    background:#00ff88;
+    color:black;
+}
+
+/* RIGHT IMAGE */
+.hero-right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-right img{
+    width:100%;
+    max-width:520px;
+    animation:float 4s ease-in-out infinite;
+    filter:drop-shadow(0 0 35px #00ff88);
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+    100%{transform:translateY(0);}
+}
+
+/* LAPTOP */
+@media (max-width:1200px){
+    .hero-left h1{
+        font-size:3.2rem;
+    }
+}
+
+/* TABLET */
+@media (max-width:992px){
+    .hero-container{
+        flex-direction:column-reverse;
+        text-align:center;
+        padding:80px 0;
+    }
+
+    .hero-left p{
+        margin:auto auto 30px;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .hero-left h1{
+        font-size:2.7rem;
+    }
+
+    .hero-right img{
+        max-width:420px;
+    }
+}
+
+/* MOBILE */
+@media (max-width:768px){
+    .hero{
+        min-height:auto;
+        padding:50px 0;
+    }
+
+    .hero-left h1{
+        font-size:2rem;
+    }
+
+    .hero-left p{
+        font-size:1rem;
+    }
+
+    .hero-right img{
+        max-width:300px;
+    }
+
+    .btn{
+        width:100%;
+        max-width:280px;
+        text-align:center;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width:480px){
+    .hero-left h1{
+        font-size:1.7rem;
+    }
+
+    .hero-right img{
+        max-width:250px;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline>
+        <source src="./1236-144355017_medium.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-container">
+
+        <!-- Left Content -->
+        <div class="hero-left">
+            <h4>CLOUD INFRASTRUCTURE</h4>
+            <h1>Scale Faster With <span>Smart Cloud Solutions</span></h1>
+            <p>
+                Secure, scalable and high-performance cloud services
+                designed to accelerate digital transformation and business growth.
+            </p>
+
+            <div class="buttons">
+                <a href="./404.html" class="btn primary">Get Started</a>
+                <a href="./404.html" class="btn secondary">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Right Floating Image -->
+        <div class="hero-right">
+            <img src="./cloud 1.webp" alt="Cloud Services">
+        </div>
+
+    </div>
+</section>
+
+
+
+<section class="services-section">
+    <div class="services-header">
+        <h4>OUR SERVICES</h4>
+        <h2>Cloud Computing Solutions</h2>
+        <p>
+            Powerful cloud services designed to accelerate business growth,
+            improve security and maximize scalability.
+        </p>
+    </div>
+
+    <div class="services-grid">
+
+        <div class="service-card reveal">
+            <img src="./cloud 2.webp" alt="Cloud Storage">
+            <h3>Cloud Storage</h3>
+            <p>Secure and scalable storage for enterprise workloads.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="./cloud migration.webp" alt="Migration">
+            <h3>Cloud Migration</h3>
+            <p>Seamlessly migrate workloads with zero downtime.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="./cloud security.webp" alt="Security">
+            <h3>Cloud Security</h3>
+            <p>Advanced monitoring and threat protection.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="cloud backup and recovery.webp" alt="Backup">
+            <h3>Backup & Recovery</h3>
+            <p>Automated backups and disaster recovery planning.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="./devops automation.webp" alt="DevOps">
+            <h3>DevOps Automation</h3>
+            <p>Accelerate deployments with CI/CD automation.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="./cloud analytics.webp" alt="Analytics">
+            <h3>Cloud Analytics</h3>
+            <p>Real-time analytics for better business decisions.</p>
+        </div>
+
+    </div>
+</section>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    font-family:Arial,sans-serif;
+}
+
+/* SECTION */
+.services-section{
+    padding:100px 5%;
+    background:linear-gradient(180deg,#050505,#081c12);
+}
+
+.services-header{
+    text-align:center;
+    max-width:850px;
+    margin:auto;
+    margin-bottom:70px;
+}
+
+.services-header h4{
+    color:#00ff88;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+.services-header h2{
+    color:white;
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.services-header p{
+    color:#bbb;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* GRID */
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+/* CARD */
+.service-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,255,136,.15);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    backdrop-filter:blur(12px);
+    transition:.4s;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(0,255,136,.2);
+}
+
+.service-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.service-card h3{
+    color:white;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.service-card p{
+    color:#bcbcbc;
+    line-height:1.7;
+}
+
+/* SCROLL ANIMATION */
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 0.9s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* LAPTOP */
+@media(max-width:1200px){
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* TABLET */
+@media(max-width:992px){
+    .services-header h2{
+        font-size:2.4rem;
+    }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .services-header h2{
+        font-size:2rem;
+    }
+
+    .services-header p{
+        font-size:16px;
+    }
+
+    .service-card img{
+        height:200px;
+    }
+}
+
+/* SMALL MOBILE */
+@media(max-width:480px){
+    .services-section{
+        padding:70px 20px;
+    }
+
+    .services-header h2{
+        font-size:1.7rem;
+    }
+}
+</style>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry,index)=>{
+        if(entry.isIntersecting){
+            setTimeout(()=>{
+                entry.target.classList.add('active');
+            }, index * 250); // cards appear one by one
+        }
+    });
+},{threshold:0.2});
+
+reveals.forEach(card=>{
+    observer.observe(card);
+});
+</script>
+
+
+<section class="why-section">
+    <div class="why-container">
+
+        <div class="why-overlay"></div>
+
+        <div class="why-content">
+            <h4>WHY CHOOSE US</h4>
+
+            <h2>
+                Future-Ready Cloud Infrastructure for
+                <span class="typing"></span>
+            </h2>
+
+            <p>
+                We deliver secure, scalable, and high-performance cloud
+                solutions that help businesses innovate faster, reduce costs,
+                and stay resilient in a digital-first world.
+            </p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <h3>99.99%</h3>
+                    <p>Uptime Guarantee</p>
+                </div>
+
+                <div class="why-card">
+                    <h3>24/7</h3>
+                    <p>Expert Support</p>
+                </div>
+
+                <div class="why-card">
+                    <h3>500+</h3>
+                    <p>Projects Delivered</p>
+                </div>
+
+                <div class="why-card">
+                    <h3>100%</h3>
+                    <p>Secure Infrastructure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    font-family:Arial,sans-serif;
+}
+
+.why-section{
+    padding:90px 5%;
+    background:#050505;
+}
+
+.why-container{
+    position:relative;
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    min-height:700px;
+    border-radius:30px;
+    overflow:hidden;
+    background:url('./cloud\ backup\ and\ recovery.webp') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+}
+
+.why-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        90deg,
+        rgba(0,0,0,.88),
+        rgba(0,40,20,.65),
+        rgba(0,0,0,.8)
+    );
+}
+
+.why-content{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:850px;
+    padding:70px;
+}
+
+.why-content h4{
+    color:#00ff88;
+    letter-spacing:4px;
+    margin-bottom:20px;
+}
+
+.why-content h2{
+    color:white;
+    font-size:3.4rem;
+    line-height:1.3;
+    margin-bottom:25px;
+}
+
+.typing{
+    color:#00ff88;
+    border-right:3px solid #00ff88;
+    padding-right:6px;
+}
+
+.why-content p{
+    color:#d5d5d5;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.why-card{
+    padding:25px;
+    border-radius:18px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(0,255,136,.2);
+    backdrop-filter:blur(10px);
+}
+
+.why-card h3{
+    color:#00ff88;
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.why-card p{
+    margin:0;
+    font-size:16px;
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .why-content h2{
+        font-size:2.8rem;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .why-container{
+        min-height:auto;
+    }
+
+    .why-content{
+        padding:50px;
+    }
+
+    .why-content h2{
+        font-size:2.3rem;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .why-section{
+        padding:70px 20px;
+    }
+
+    .why-content{
+        padding:35px 25px;
+        width:100%;
+    }
+
+    .why-content h2{
+        font-size:1.8rem;
+    }
+
+    .why-content p{
+        font-size:15px;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+    .why-content h2{
+        font-size:1.5rem;
+    }
+
+    .why-card h3{
+        font-size:26px;
+    }
+}
+</style>
+
+<script>
+const words = [
+    "Startups",
+    "Enterprises",
+    "Innovation",
+    "Growth",
+    "Scale"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+const typingElement = document.querySelector(".typing");
+
+function typeEffect(){
+    const currentWord = words[wordIndex];
+
+    if(!deleting){
+        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+
+        if(charIndex === currentWord.length){
+            deleting = true;
+            setTimeout(typeEffect, 1200);
+            return;
+        }
+    }else{
+        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+
+        if(charIndex === 0){
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+        }
+    }
+
+    setTimeout(typeEffect, deleting ? 60 : 120);
+}
+
+typeEffect();
+</script>
+
+
+<section class="cloudsol-section">
+    <div class="cloudsol-heading">
+        <span>CLOUD SOLUTIONS</span>
+        <h2>Explore Our <span>Cloud Services</span></h2>
+        <p>
+            Powerful, scalable and secure cloud services to accelerate your business
+            with innovation, reliability and performance.
+        </p>
+    </div>
+
+    <div class="cloudsol-grid">
+
+        <!-- Large Left Card -->
+        <div class="cloudsol-card cloudsol-large">
+            <img src="./cloud 1.webp" alt="">
+            <div class="cloudsol-overlay"></div>
+            <div class="cloudsol-content">
+                <small>CORE SERVICE</small>
+                <h3>Cloud Infrastructure</h3>
+                <p>
+                    High-performance cloud infrastructure built for scalability,
+                    reliability and uptime.
+                </p>
+                <a href="./404.html">Learn More →</a>
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="cloudsol-right">
+
+            <div class="cloudsol-card cloudsol-wide">
+                <img src="./cloud migration.webp" alt="">
+                <div class="cloudsol-overlay"></div>
+                <div class="cloudsol-content">
+                    <small>SOLUTION</small>
+                    <h3>Cloud Migration</h3>
+                    <p>Seamlessly migrate workloads with zero downtime.</p>
+                    <a href="./404.html">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="cloudsol-small-grid">
+
+                <div class="cloudsol-card">
+                    <img src="./cloud security.webp" alt="">
+                    <div class="cloudsol-overlay"></div>
+                    <div class="cloudsol-content">
+                        <small>SOLUTION</small>
+                        <h3>Cloud Security</h3>
+                        <p>Enterprise-grade protection.</p>
+                        <a href="./404.html">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="cloudsol-card">
+                    <img src="./cloud 2.webp" alt="">
+                    <div class="cloudsol-overlay"></div>
+                    <div class="cloudsol-content">
+                        <small>SOLUTION</small>
+                        <h3>Cloud Storage</h3>
+                        <p>Secure scalable storage.</p>
+                        <a href="./404.html">Learn More →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.cloudsol-section{
+    padding:100px 5%;
+    background:#050505;
+    font-family:Arial,sans-serif;
+}
+
+.cloudsol-heading{
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+    margin-bottom:70px;
+}
+
+.cloudsol-heading span{
+    color:#00ff88;
+    font-weight:600;
+    letter-spacing:3px;
+}
+
+.cloudsol-heading h2{
+    font-size:58px;
+    color:#fff;
+    margin:20px 0;
+}
+
+.cloudsol-heading h2 span{
+    color:#00ff88;
+}
+
+.cloudsol-heading p{
+    color:#bbb;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.cloudsol-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1.5fr;
+    gap:30px;
+}
+
+.cloudsol-right{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.cloudsol-small-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.cloudsol-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+    min-height:320px;
+    cursor:pointer;
+    border:1px solid rgba(0,255,136,.2);
+}
+
+.cloudsol-large{
+    min-height:720px;
+}
+
+.cloudsol-wide{
+    min-height:340px;
+}
+
+.cloudsol-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .7s ease;
+}
+
+.cloudsol-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.9),
+        rgba(0,0,0,.35)
+    );
+}
+
+.cloudsol-content{
+    position:absolute;
+    left:35px;
+    bottom:35px;
+    z-index:2;
+    color:#fff;
+}
+
+.cloudsol-content small{
+    color:#00ff88;
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+.cloudsol-content h3{
+    font-size:46px;
+    margin:12px 0;
+    line-height:1.2;
+}
+
+.cloudsol-wide .cloudsol-content h3{
+    font-size:40px;
+}
+
+.cloudsol-small-grid .cloudsol-content h3{
+    font-size:30px;
+}
+
+.cloudsol-content p{
+    color:#ddd;
+    max-width:450px;
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.cloudsol-content a{
+    color:#00ff88;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* Hover Animation */
+.cloudsol-card:hover img{
+    transform:scale(1.12);
+}
+
+.cloudsol-card:not(:hover) img{
+    transform:scale(1);
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .cloudsol-heading h2{
+        font-size:46px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .cloudsol-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cloudsol-large{
+        min-height:500px;
+    }
+
+    .cloudsol-heading h2{
+        font-size:38px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .cloudsol-section{
+        padding:70px 20px;
+    }
+
+    .cloudsol-small-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cloudsol-heading h2{
+        font-size:30px;
+    }
+
+    .cloudsol-heading p{
+        font-size:16px;
+    }
+
+    .cloudsol-card,
+    .cloudsol-wide,
+    .cloudsol-large{
+        min-height:300px;
+    }
+
+    .cloudsol-content{
+        left:20px;
+        bottom:20px;
+    }
+
+    .cloudsol-content h3,
+    .cloudsol-wide .cloudsol-content h3,
+    .cloudsol-small-grid .cloudsol-content h3{
+        font-size:24px;
+    }
+
+    .cloudsol-content p{
+        font-size:14px;
+    }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+    .cloudsol-heading h2{
+        font-size:24px;
+    }
+
+    .cloudsol-content h3{
+        font-size:20px !important;
+    }
+
+    .cloudsol-content p{
+        display:none;
+    }
+}
+</style>
+
+<section class="archpro-section">
+    <div class="archpro-header archpro-fade">
+        <span>CLOUD ARCHITECTURE</span>
+        <h2>Architecture Workflow</h2>
+        <p>
+            Secure, scalable cloud architecture powering modern digital
+            infrastructure and enterprise applications.
+        </p>
+    </div>
+
+    <div class="archpro-container archpro-fade">
+
+        <!-- SVG Lines -->
+        <svg class="archpro-lines" viewBox="0 0 1000 650">
+            <line x1="500" y1="325" x2="150" y2="325" />
+            <line x1="500" y1="325" x2="850" y2="325" />
+            <line x1="500" y1="325" x2="500" y2="110" />
+            <line x1="500" y1="325" x2="500" y2="540" />
+
+            <circle class="pulse p1" r="6"/>
+            <circle class="pulse p2" r="6"/>
+            <circle class="pulse p3" r="6"/>
+            <circle class="pulse p4" r="6"/>
+        </svg>
+
+        <div class="archpro-core">
+            ☁
+            <h3>Cloud Core</h3>
+        </div>
+
+        <div class="archpro-box arch-left">
+            <h4>Data Input</h4>
+            <p>Collect data from users and systems.</p>
+        </div>
+
+        <div class="archpro-box arch-right">
+            <h4>Cloud Storage</h4>
+            <p>Store large datasets securely.</p>
+        </div>
+
+        <div class="archpro-box arch-top">
+            <h4>Compute Engine</h4>
+            <p>Process workloads instantly.</p>
+        </div>
+
+        <div class="archpro-box arch-bottom">
+            <h4>Analytics</h4>
+            <p>Generate business insights.</p>
+        </div>
+
+    </div>
+</section>
+
+<style>
+.archpro-section{
+    padding:100px 5%;
+    background:#050505;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+.archpro-header{
+    text-align:center;
+    max-width:850px;
+    margin:auto;
+    margin-bottom:70px;
+}
+
+.archpro-header span{
+    color:#00ff88;
+    letter-spacing:4px;
+}
+
+.archpro-header h2{
+    color:#fff;
+    font-size:52px;
+    margin:20px 0;
+}
+
+.archpro-header p{
+    color:#cfcfcf;
+    line-height:1.8;
+}
+
+.archpro-container{
+    position:relative;
+    max-width:1100px;
+    height:650px;
+    margin:auto;
+}
+
+.archpro-lines{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+.archpro-lines line{
+    stroke:#00ff88;
+    stroke-width:2;
+    stroke-dasharray:10 8;
+    animation:dashmove 1s linear infinite;
+    opacity:.7;
+}
+
+@keyframes dashmove{
+    to{stroke-dashoffset:-18;}
+}
+
+.pulse{
+    fill:#00ff88;
+    filter:drop-shadow(0 0 8px #00ff88);
+}
+
+.p1{animation:move1 3s linear infinite;}
+.p2{animation:move2 3s linear infinite;}
+.p3{animation:move3 3s linear infinite;}
+.p4{animation:move4 3s linear infinite;}
+
+@keyframes move1{
+    from{transform:translate(500px,325px);}
+    to{transform:translate(150px,325px);}
+}
+@keyframes move2{
+    from{transform:translate(500px,325px);}
+    to{transform:translate(850px,325px);}
+}
+@keyframes move3{
+    from{transform:translate(500px,325px);}
+    to{transform:translate(500px,110px);}
+}
+@keyframes move4{
+    from{transform:translate(500px,325px);}
+    to{transform:translate(500px,540px);}
+}
+
+.archpro-core{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:rgba(0,255,136,.12);
+    border:2px solid #00ff88;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:65px;
+    box-shadow:0 0 40px rgba(0,255,136,.3);
+}
+
+.archpro-core h3{
+    font-size:28px;
+}
+
+.archpro-box{
+    position:absolute;
+    width:260px;
+    padding:25px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(0,255,136,.25);
+    border-radius:20px;
+    color:#fff;
+    transition:1s ease;
+}
+
+.archpro-box h4{
+    color:#00ff88;
+    margin-bottom:10px;
+}
+
+.arch-left{
+    left:0;
+    top:50%;
+    transform:translateX(-100px);
+    opacity:0;
+}
+.arch-right{
+    right:0;
+    top:50%;
+    transform:translateX(100px);
+    opacity:0;
+}
+.arch-top{
+    top:0;
+    left:50%;
+    transform:translate(-50%,-100px);
+    opacity:0;
+}
+.arch-bottom{
+    bottom:0;
+    left:50%;
+    transform:translate(-50%,100px);
+    opacity:0;
+}
+
+.archpro-container.active .arch-left,
+.archpro-container.active .arch-right,
+.archpro-container.active .arch-top,
+.archpro-container.active .arch-bottom{
+    opacity:1;
+    transform:translate(0,0);
+}
+
+.archpro-fade{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.archpro-fade.active{
+    opacity:1;
+    transform:none;
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .archpro-container{
+        height:auto;
+        display:grid;
+        gap:20px;
+    }
+
+    .archpro-lines{
+        display:none;
+    }
+
+    .archpro-core,
+    .archpro-box{
+        position:relative;
+        inset:auto;
+        transform:none !important;
+        opacity:1 !important;
+        width:100%;
+    }
+
+    .archpro-core{
+        margin:auto;
+    }
+
+    .archpro-header h2{
+        font-size:38px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .archpro-section{
+        padding:70px 20px;
+    }
+
+    .archpro-header h2{
+        font-size:28px;
+    }
+
+    .archpro-core{
+        width:170px;
+        height:170px;
+        font-size:45px;
+    }
+
+    .archpro-core h3{
+        font-size:20px;
+    }
+}
+</style>
+
+<script>
+(function(){
+    const elements=document.querySelectorAll('.archpro-fade');
+    const container=document.querySelector('.archpro-container');
+
+    const observer=new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('active');
+            }
+        });
+    },{threshold:0.2});
+
+    elements.forEach(el=>observer.observe(el));
+    observer.observe(container);
+})();
+</script>
+
+
+
+
+<section class="indsrv-section">
+    <div class="indsrv-wrapper">
+
+        <!-- Left Image -->
+        <div class="indsrv-image indsrv-left-reveal">
+            <img src="./cloud industry.webp" alt="Industries We Serve">
+        </div>
+
+        <!-- Right Content -->
+        <div class="indsrv-content indsrv-right-reveal">
+            <span class="indsrv-subtitle">INDUSTRIES WE SERVE</span>
+
+            <h2>Cloud Solutions for Every Industry</h2>
+
+            <p>
+                We empower businesses across multiple industries with secure,
+                scalable and intelligent cloud infrastructure tailored to their needs.
+            </p>
+
+            <div class="indsrv-grid">
+
+                <div class="indsrv-card">
+                    <h4>🏥 Healthcare</h4>
+                    <p>Secure patient data & digital records.</p>
+                </div>
+
+                <div class="indsrv-card">
+                    <h4>🏦 Banking</h4>
+                    <p>Reliable financial data infrastructure.</p>
+                </div>
+
+                <div class="indsrv-card">
+                    <h4>🛒 E-Commerce</h4>
+                    <p>Scale online stores during peak traffic.</p>
+                </div>
+
+                <div class="indsrv-card">
+                    <h4>🎓 Education</h4>
+                    <p>Power digital learning platforms globally.</p>
+                </div>
+
+                <div class="indsrv-card">
+                    <h4>🏭 Manufacturing</h4>
+                    <p>Optimize production and operations.</p>
+                </div>
+
+                <div class="indsrv-card">
+                    <h4>💻 SaaS</h4>
+                    <p>Deploy and scale cloud-native apps.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.indsrv-section{
+    padding:100px 5%;
+    background:linear-gradient(180deg,#050505,#081d13,#050505);
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+.indsrv-wrapper{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+/* Left Image */
+.indsrv-image{
+    position:relative;
+    border-radius:28px;
+    overflow:hidden;
+}
+
+.indsrv-image img{
+    width:100%;
+    display:block;
+    border-radius:28px;
+    object-fit:cover;
+    min-height:620px;
+}
+
+/* Right Content */
+.indsrv-subtitle{
+    color:#00ff88;
+    font-size:14px;
+    letter-spacing:4px;
+    font-weight:700;
+}
+
+.indsrv-content h2{
+    color:#fff;
+    font-size:52px;
+    margin:20px 0;
+    line-height:1.2;
+}
+
+.indsrv-content p{
+    color:#cfcfcf;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.indsrv-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.indsrv-card{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(0,255,136,.18);
+    border-radius:18px;
+    padding:22px;
+    transition:.4s ease;
+}
+
+.indsrv-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 25px rgba(0,255,136,.2);
+}
+
+.indsrv-card h4{
+    color:#00ff88;
+    font-size:20px;
+    margin-bottom:12px;
+}
+
+.indsrv-card p{
+    margin:0;
+    color:#cfcfcf;
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* Scroll Animations */
+.indsrv-left-reveal{
+    opacity:0;
+    transform:translateX(-100px);
+    transition:1s ease;
+}
+
+.indsrv-right-reveal{
+    opacity:0;
+    transform:translateX(100px);
+    transition:1s ease;
+}
+
+.indsrv-left-reveal.active,
+.indsrv-right-reveal.active{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* Laptop */
+@media (max-width:1200px){
+    .indsrv-content h2{
+        font-size:42px;
+    }
+}
+
+/* Tablet */
+@media (max-width:992px){
+    .indsrv-wrapper{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .indsrv-image img{
+        min-height:450px;
+    }
+
+    .indsrv-content h2{
+        font-size:36px;
+    }
+}
+
+/* Mobile */
+@media (max-width:768px){
+    .indsrv-section{
+        padding:70px 20px;
+    }
+
+    .indsrv-grid{
+        grid-template-columns:1fr;
+    }
+
+    .indsrv-content h2{
+        font-size:28px;
+    }
+
+    .indsrv-content p{
+        font-size:15px;
+    }
+
+    .indsrv-image img{
+        min-height:320px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+    .indsrv-content h2{
+        font-size:24px;
+    }
+
+    .indsrv-card{
+        padding:18px;
+    }
+
+    .indsrv-card h4{
+        font-size:17px;
+    }
+}
+</style>
+
+<script>
+(function(){
+    const elements = document.querySelectorAll(
+        '.indsrv-left-reveal, .indsrv-right-reveal'
+    );
+
+    const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold:0.2 });
+
+    elements.forEach(el=>observer.observe(el));
+})();
+</script>
+
+
+<section class="hcprice-section">
+    <div class="hcprice-header">
+        <span>PRICING PLANS</span>
+        <h2>Choose Your Cloud Plan</h2>
+        <p>
+            Flexible pricing plans for startups, enterprises and large-scale businesses.
+        </p>
+    </div>
+
+    <div class="hcprice-grid">
+
+        <!-- Card 1 -->
+        <div class="hcprice-card hcprice-reveal">
+            <span class="hcprice-corner tl"></span>
+            <span class="hcprice-corner tr"></span>
+            <span class="hcprice-corner bl"></span>
+            <span class="hcprice-corner br"></span>
+
+            <h3>Starter</h3>
+            <div class="hcprice-price">$49 <span>/month</span></div>
+
+            <ul>
+                <li>☁ 100 GB Storage</li>
+                <li>⚡ 2 vCPU</li>
+                <li>🧠 4 GB RAM</li>
+                <li>🔒 Basic Security</li>
+                <li>📧 Email Support</li>
+            </ul>
+
+            <a href="./404.html">Get Started</a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="hcprice-card hcprice-featured hcprice-reveal">
+            <span class="hcprice-corner tl"></span>
+            <span class="hcprice-corner tr"></span>
+            <span class="hcprice-corner bl"></span>
+            <span class="hcprice-corner br"></span>
+
+            <div class="hcprice-badge">Most Popular</div>
+
+            <h3>Business</h3>
+            <div class="hcprice-price">$149 <span>/month</span></div>
+
+            <ul>
+                <li>☁ 1 TB Storage</li>
+                <li>⚡ 8 vCPU</li>
+                <li>🧠 16 GB RAM</li>
+                <li>🛡 Advanced Security</li>
+                <li>📞 24/7 Support</li>
+            </ul>
+
+            <a href="./404.html">Choose Plan</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="hcprice-card hcprice-reveal">
+            <span class="hcprice-corner tl"></span>
+            <span class="hcprice-corner tr"></span>
+            <span class="hcprice-corner bl"></span>
+            <span class="hcprice-corner br"></span>
+
+            <h3>Enterprise</h3>
+            <div class="hcprice-price">Custom</div>
+
+            <ul>
+                <li>♾ Unlimited Storage</li>
+                <li>🖥 Dedicated Servers</li>
+                <li>🤖 AI Analytics</li>
+                <li>🛡 Premium Security</li>
+                <li>👨‍💼 Dedicated Manager</li>
+            </ul>
+
+            <a href="./404.html">Contact Sales</a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+.hcprice-section{
+    padding:100px 5%;
+    background:#050505;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+.hcprice-header{
+    text-align:center;
+    max-width:900px;
+    margin:auto auto 70px;
+}
+
+.hcprice-header span{
+    color:#00ff88;
+    letter-spacing:4px;
+    font-weight:700;
+}
+
+.hcprice-header h2{
+    color:#fff;
+    font-size:52px;
+    margin:20px 0;
+}
+
+.hcprice-header p{
+    color:#cfcfcf;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.hcprice-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.hcprice-card{
+    position:relative;
+    padding:55px 35px;
+    background:linear-gradient(180deg,#06271d,#071d16);
+    min-height:580px;
+    transition:.45s ease;
+}
+
+/* HostCloud Corners */
+.hcprice-corner{
+    position:absolute;
+    width:32px;
+    height:32px;
+    border:3px solid #00ff88;
+}
+
+.hcprice-corner.tl{
+    top:15px;
+    left:15px;
+    border-right:none;
+    border-bottom:none;
+}
+.hcprice-corner.tr{
+    top:15px;
+    right:15px;
+    border-left:none;
+    border-bottom:none;
+}
+.hcprice-corner.bl{
+    bottom:15px;
+    left:15px;
+    border-right:none;
+    border-top:none;
+}
+.hcprice-corner.br{
+    bottom:15px;
+    right:15px;
+    border-left:none;
+    border-top:none;
+}
+
+.hcprice-card:hover{
+    transform:translateY(-15px) scale(1.03);
+    background:linear-gradient(180deg,#00ff88,#083124);
+    box-shadow:0 0 35px rgba(115,255,226,.22);
+}
+
+.hcprice-card h3{
+    color:white;
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.hcprice-price{
+    color:#73ffe2;
+    font-size:48px;
+    font-weight:bold;
+    margin-bottom:35px;
+}
+
+.hcprice-price span{
+    font-size:18px;
+    color:#ccc;
+}
+
+.hcprice-card ul{
+    list-style:none;
+    padding:0;
+    margin-bottom:40px;
+}
+
+.hcprice-card li{
+    color:#d6d6d6;
+    margin-bottom:18px;
+    font-size:16px;
+}
+
+.hcprice-card a{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    padding:16px;
+    background:#00ff88;
+    color:black;
+    font-weight:bold;
+}
+
+.hcprice-featured{
+    background:linear-gradient(180deg,#0a4a38,#073628);
+}
+
+.hcprice-badge{
+    position:absolute;
+    top:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#73ffe2;
+    color:black;
+    padding:8px 18px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* Scroll reveal */
+.hcprice-reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.hcprice-active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .hcprice-grid{
+        grid-template-columns:1fr;
+        max-width:600px;
+        margin:auto;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .hcprice-section{
+        padding:70px 20px;
+    }
+
+    .hcprice-header h2{
+        font-size:30px;
+    }
+
+    .hcprice-card{
+        min-height:auto;
+        padding:45px 25px;
+    }
+
+    .hcprice-price{
+        font-size:36px;
+    }
+}
+</style>
+
+<script>
+(function(){
+    const cards=document.querySelectorAll('.hcprice-reveal');
+
+    const observer=new IntersectionObserver((entries)=>{
+        entries.forEach((entry,index)=>{
+            if(entry.isIntersecting){
+                setTimeout(()=>{
+                    entry.target.classList.add('hcprice-active');
+                }, index*250);
+            }
+        });
+    },{threshold:0.2});
+
+    cards.forEach(card=>observer.observe(card));
+})();
+</script>
+
+
+<section class="ctest-section">
+
+    <div class="ctest-container">
+
+        <!-- Left Content -->
+        <div class="ctest-slider ctest-left-reveal">
+            <span class="ctest-subtitle">CLIENT TESTIMONIALS</span>
+            <h2 class="ctest-title">What Our Clients Say</h2>
+
+            <div class="ctest-quote">❝</div>
+
+            <div class="ctest-slide active">
+                <p class="ctest-text">
+                    Their cloud migration service transformed our infrastructure.
+                    Downtime was reduced by 80% and performance improved dramatically.
+                </p>
+
+                <div class="ctest-author">
+                    <img src="./joe.webp" alt="">
+                    <div>
+                        <h4>James Anderson</h4>
+                        <p>CTO, FinTech Corp</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ctest-slide">
+                <p class="ctest-text">
+                    Security, scalability and uptime have been exceptional.
+                    Their cloud team feels like an extension of our company.
+                </p>
+
+                <div class="ctest-author">
+                    <img src="./nithiya.webp" alt="">
+                    <div>
+                        <h4>Sarah Wilson</h4>
+                        <p>IT Director, HealthCare Inc</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ctest-slide">
+                <p class="ctest-text">
+                    We scaled to millions of users using their cloud architecture.
+                    Highly reliable and enterprise-ready solutions.
+                </p>
+
+                <div class="ctest-author">
+                    <img src="./arjun.webp" alt="">
+                    <div>
+                        <h4>Michael Brown</h4>
+                        <p>Founder, SaaS Platform</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ctest-nav">
+                <button onclick="ctestChange(-1)">←</button>
+                <button onclick="ctestChange(1)">→</button>
+            </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="ctest-image ctest-right-reveal">
+            <img src="./cloud backup and recovery.webp" alt="">
+        </div>
+
+    </div>
+</section>
+
+<style>
+.ctest-section{
+    width:100%;
+    padding:100px 6%;
+    background:linear-gradient(180deg,#050505,#081c13,#050505);
+    overflow:hidden;
+}
+
+.ctest-container{
+    display:flex;
+    align-items:center;
+    gap:60px;
+}
+
+.ctest-slider,
+.ctest-image{
+    flex:1;
+}
+
+.ctest-subtitle{
+    color:#00ff88;
+    letter-spacing:4px;
+    font-weight:700;
+    font-size:14px;
+}
+
+.ctest-title{
+    font-size:58px;
+    margin:18px 0 30px;
+    color:#fff;
+}
+
+.ctest-quote{
+    font-size:90px;
+    color:#00ff88;
+    line-height:1;
+}
+
+.ctest-slide{
+    display:none;
+    animation:ctestFade .6s ease;
+}
+
+.ctest-slide.active{
+    display:block;
+}
+
+@keyframes ctestFade{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.ctest-text{
+    font-size:20px;
+    line-height:1.9;
+    color:#cfcfcf;
+    margin:20px 0 35px;
+}
+
+.ctest-author{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.ctest-author img{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #00ff88;
+}
+
+.ctest-author h4{
+    color:#fff;
+    font-size:20px;
+}
+
+.ctest-author p{
+    color:#aaa;
+}
+
+.ctest-nav{
+    margin-top:40px;
+    display:flex;
+    gap:15px;
+}
+
+.ctest-nav button{
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:50%;
+    background:#00ff88;
+    color:black;
+    cursor:pointer;
+    font-size:20px;
+    transition:.4s;
+}
+
+.ctest-nav button:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 20px rgba(0,255,136,.35);
+}
+
+.ctest-image img{
+    width:100%;
+    height:650px;
+    object-fit:cover;
+    border-radius:24px;
+    border:1px solid rgba(0,255,136,.25);
+}
+
+/* Scroll Animation */
+.ctest-left-reveal{
+    opacity:0;
+    transform:translateX(-100px);
+    transition:1s ease;
+}
+
+.ctest-right-reveal{
+    opacity:0;
+    transform:translateX(100px);
+    transition:1s ease;
+}
+
+.ctest-show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .ctest-container{
+        flex-direction:column;
+    }
+
+    .ctest-title{
+        font-size:42px;
+    }
+
+    .ctest-image img{
+        height:500px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .ctest-section{
+        padding:70px 20px;
+    }
+
+    .ctest-title{
+        font-size:30px;
+    }
+
+    .ctest-text{
+        font-size:16px;
+    }
+
+    .ctest-author img{
+        width:60px;
+        height:60px;
+    }
+
+    .ctest-image img{
+        height:320px;
+    }
+}
+</style>
+
+<script>
+let ctestIndex = 0;
+const ctestSlides = document.querySelectorAll(".ctest-slide");
+
+function ctestShow(index){
+    ctestSlides.forEach(slide => slide.classList.remove("active"));
+
+    if(index >= ctestSlides.length) ctestIndex = 0;
+    if(index < 0) ctestIndex = ctestSlides.length - 1;
+
+    ctestSlides[ctestIndex].classList.add("active");
+}
+
+function ctestChange(step){
+    ctestIndex += step;
+    ctestShow(ctestIndex);
+}
+
+setInterval(()=>{
+    ctestIndex++;
+    ctestShow(ctestIndex);
+},5000);
+
+const ctestObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("ctest-show");
+        }
+    });
+},{threshold:0.2});
+
+document.querySelectorAll(".ctest-left-reveal, .ctest-right-reveal")
+.forEach(el=>ctestObserver.observe(el));
+</script>
+
+<section class="hcstrip-section">
+
+    <!-- Heading -->
+    <div class="hcstrip-heading">
+        <span class="hcstrip-subtitle">WHY CHOOSE US</span>
+        <h2 class="hcstrip-title">Enterprise Security & Cloud Protection</h2>
+        <p class="hcstrip-desc">
+            Secure your infrastructure with enterprise-grade protection, advanced
+            monitoring, and high-performance cloud architecture built for scale.
+        </p>
+    </div>
+
+    <!-- Feature Strip -->
+    <div class="hcstrip-wrapper">
+
+        <div class="hcstrip-item">
+            <div class="hcstrip-icon">🐞</div>
+            <div class="hcstrip-content">
+                <h3>Malware Protection</h3>
+                <p>Real-time monitoring against malicious threats.</p>
+            </div>
+        </div>
+
+        <div class="hcstrip-item">
+            <div class="hcstrip-icon">🔑</div>
+            <div class="hcstrip-content">
+                <h3>Access Security</h3>
+                <p>Multi-layer authentication and access control.</p>
+            </div>
+        </div>
+
+        <div class="hcstrip-item">
+            <div class="hcstrip-icon">🛡</div>
+            <div class="hcstrip-content">
+                <h3>Data Protection</h3>
+                <p>End-to-end encryption for sensitive workloads.</p>
+            </div>
+        </div>
+
+        <div class="hcstrip-item">
+            <div class="hcstrip-icon">⭐</div>
+            <div class="hcstrip-content">
+                <h3>Premium Reliability</h3>
+                <p>99.99% uptime backed by global cloud regions.</p>
+            </div>
+        </div>
+
+        <div class="hcstrip-item">
+            <div class="hcstrip-icon">🔥</div>
+            <div class="hcstrip-content">
+                <h3>Firewall Shield</h3>
+                <p>Advanced network firewall and traffic filtering.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+.hcstrip-section{
+    width:100%;
+    padding:90px 0 0;
+    background:#050505;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+/* Heading */
+.hcstrip-heading{
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+    padding:0 20px 60px;
+}
+
+.hcstrip-subtitle{
+    color:#00ff88;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:4px;
+    display:block;
+    margin-bottom:18px;
+}
+
+.hcstrip-title{
+    color:#fff;
+    font-size:54px;
+    margin:0 0 20px;
+    line-height:1.2;
+}
+
+.hcstrip-desc{
+    color:#bdbdbd;
+    font-size:18px;
+    line-height:1.8;
+    margin:0;
+}
+
+/* Strip */
+.hcstrip-wrapper{
+    width:100%;
+    min-height:260px;
+    display:flex;
+    background:linear-gradient(90deg,#00ff88,#083124,#00ff88);
+}
+
+.hcstrip-item{
+    flex:1;
+    min-width:0;
+    border-right:1px solid rgba(0,255,170,.18);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px 20px;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    transition:flex .55s ease, background .45s ease;
+}
+
+.hcstrip-item:last-child{
+    border-right:none;
+}
+
+.hcstrip-icon{
+    font-size:58px;
+    color:#00ff88;
+    transition:.45s ease;
+}
+
+.hcstrip-content{
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    text-align:center;
+    transform:translateY(25px);
+    transition:all .45s ease;
+}
+
+.hcstrip-content h3{
+    margin:18px 0 12px;
+    color:#fff;
+    font-size:24px;
+}
+
+.hcstrip-content p{
+    margin:0;
+    color:#d2d2d2;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.hcstrip-item:hover{
+    flex:1.8;
+    background:linear-gradient(180deg,#0a4a38,#073628);
+    box-shadow:inset 0 0 80px rgba(0,255,170,.08);
+}
+
+.hcstrip-item:hover .hcstrip-icon{
+    transform:translateY(-12px) scale(1.12);
+}
+
+.hcstrip-item:hover .hcstrip-content{
+    opacity:1;
+    max-height:200px;
+    transform:translateY(0);
+}
+
+.hcstrip-wrapper:hover .hcstrip-item:not(:hover){
+    flex:.9;
+}
+
+/* Laptop */
+@media screen and (max-width:1200px){
+    .hcstrip-title{
+        font-size:42px;
+    }
+}
+
+/* Tablet */
+@media screen and (max-width:992px){
+    .hcstrip-wrapper{
+        flex-wrap:wrap;
+    }
+
+    .hcstrip-item{
+        width:50%;
+        min-height:240px;
+        flex:none;
+    }
+
+    .hcstrip-item:hover{
+        flex:none;
+    }
+
+    .hcstrip-title{
+        font-size:36px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width:768px){
+    .hcstrip-section{
+        padding-top:70px;
+    }
+
+    .hcstrip-title{
+        font-size:28px;
+    }
+
+    .hcstrip-desc{
+        font-size:15px;
+    }
+
+    .hcstrip-wrapper{
+        display:block;
+    }
+
+    .hcstrip-item{
+        width:100%;
+        min-height:170px;
+        border-right:none;
+        border-bottom:1px solid rgba(0,255,170,.18);
+    }
+
+    .hcstrip-content{
+        opacity:1;
+        max-height:200px;
+        transform:none;
+        margin-top:16px;
+    }
+
+    .hcstrip-icon{
+        font-size:42px;
+    }
+
+    .hcstrip-content h3{
+        font-size:18px;
+    }
+
+    .hcstrip-content p{
+        font-size:14px;
+    }
+}
+</style>
+
+<section class="ccontact-section">
+
+    <!-- Background grid -->
+    <div class="ccontact-grid"></div>
+
+    <div class="ccontact-wrapper">
+
+        <!-- Left Image -->
+        <div class="ccontact-left ccontact-reveal-left">
+            <img src="./cl.webp" alt="Cloud Support">
+        </div>
+
+        <!-- Right Content -->
+        <div class="ccontact-right ccontact-reveal-right">
+
+            <span class="ccontact-mini">CONTACT</span>
+            <h2>24/7 Cloud Support</h2>
+
+            <div class="ccontact-box">
+
+                <h3>Call Us Now.</h3>
+
+                <a href="tel:+910123456789" class="ccontact-phone">
+                    ☎ +91 0123456789
+                </a>
+
+                <ul>
+                    <li>Dedicated cloud engineers available 24/7.</li>
+                    <li>Instant infrastructure monitoring & alerts.</li>
+                    <li>Rapid issue resolution and scaling support.</li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+.ccontact-section{
+    position:relative;
+    width:100%;
+    padding:100px 5%;
+    background:#020202;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+/* Grid Background */
+/* .ccontact-grid{
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(0,255,170,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,170,.08) 1px, transparent 1px);
+    background-size:180px 180px;
+    z-index:0;
+} */
+
+.ccontact-wrapper{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:70px;
+}
+
+/* LEFT */
+.ccontact-left{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.ccontact-left img{
+    width:100%;
+    max-width:540px;
+    animation:ccontactFloat 4s ease-in-out infinite;
+}
+
+@keyframes ccontactFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
+/* RIGHT */
+.ccontact-right{
+    flex:1;
+}
+
+.ccontact-mini{
+    color:#00ff88;
+    font-size:14px;
+    letter-spacing:4px;
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.ccontact-right h2{
+    color:white;
+    font-size:58px;
+    margin-bottom:40px;
+}
+
+.ccontact-box{
+    position:relative;
+    background:linear-gradient(90deg,#07261d,#062118);
+    padding:50px;
+    border:1px solid rgba(110,255,216,.6);
+}
+
+.ccontact-box::before{
+    content:"";
+    position:absolute;
+    top:-1px;
+    left:-1px;
+    width:40px;
+    height:40px;
+    border-top:3px solid #00ff88;
+    border-left:3px solid #00ff88;
+}
+
+.ccontact-box::after{
+    content:"";
+    position:absolute;
+    right:-1px;
+    bottom:-1px;
+    width:40px;
+    height:40px;
+    border-right:3px solid #00ff88;
+    border-bottom:3px solid #00ff88;
+}
+
+.ccontact-box h3{
+    color:#00ff88;
+    font-size:52px;
+    margin-bottom:30px;
+}
+
+.ccontact-phone{
+    display:inline-block;
+    padding:18px 30px;
+    background:rgba(110,255,216,.15);
+    color:#00ff88;
+    text-decoration:none;
+    margin-bottom:30px;
+    font-size:20px;
+}
+
+.ccontact-box ul{
+    padding-left:20px;
+}
+
+.ccontact-box li{
+    color:#d8d8d8;
+    line-height:1.9;
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+/* Scroll animations */
+.ccontact-reveal-left{
+    opacity:0;
+    transform:translateX(-120px);
+    transition:1.2s ease;
+}
+
+.ccontact-reveal-right{
+    opacity:0;
+    transform:translateX(120px);
+    transition:1.2s ease;
+}
+
+.ccontact-show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .ccontact-right h2{
+        font-size:48px;
+    }
+
+    .ccontact-box h3{
+        font-size:42px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .ccontact-wrapper{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .ccontact-box ul{
+        text-align:left;
+    }
+
+    .ccontact-right h2{
+        font-size:40px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .ccontact-section{
+        padding:70px 20px;
+    }
+
+    .ccontact-right h2{
+        font-size:30px;
+    }
+
+    .ccontact-box{
+        padding:30px 22px;
+    }
+
+    .ccontact-box h3{
+        font-size:28px;
+    }
+
+    .ccontact-phone{
+        font-size:15px;
+        padding:14px 20px;
+    }
+
+    .ccontact-box li{
+        font-size:15px;
+    }
+}
+</style>
+
+<script>
+(function(){
+    const items=document.querySelectorAll(
+        '.ccontact-reveal-left, .ccontact-reveal-right'
+    );
+
+    const observer=new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('ccontact-show');
+            }
+        });
+    },{threshold:0.25});
+
+    items.forEach(item=>observer.observe(item));
+})();
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="rstfooter-section">
+
+    <div class="rstfooter-container">
+
+        <!-- Column 1 -->
+        <div class="rstfooter-col">
+            <a href="index.html" class="rstfooter-logo">
+                <img src="./white.webp" alt="Stackly Logo"
+style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) saturate(2874%) hue-rotate(92deg) brightness(103%) contrast(105%);">
+    </a>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe, rerum!
+            </p>
+
+            <div class="rstfooter-social">
+                <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="./404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                <a href="./404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="rstfooter-col">
+            <h3>Working Hours</h3>
+
+            <ul class="rstfooter-hours">
+                <li><span>Mon - Fri</span><span>09:00 - 22:00</span></li>
+                <li><span>Saturday</span><span>11:00 - 00:00</span></li>
+                <li><span>Sunday</span><span>11:00 - 23:00</span></li>
+                <li><span>Happy Hour</span><span>17:00 - 21:00</span></li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="rstfooter-col">
+            <h3>Contact Us</h3>
+
+            <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> booking@thestackly.com</p>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="rstfooter-col">
+            <h3>Newsletter</h3>
+            <p>Receive latest updates from us.</p>
+
+            <form id="rstfooterForm">
+                <input type="email" id="rstfooterEmail" placeholder="Enter Email">
+                <button type="submit">Subscribe</button>
+            </form>
+
+            <small id="rstfooterMsg"></small>
+        </div>
+
+    </div>
+
+    <div class="rstfooter-bottom">
+        © 2026 Stackly services. All Rights Reserved.
+    </div>
+
+</footer>
+
+<style>
+    .rstfooter-section{
+    background:#111;
+    color:white;
+    padding:70px  20px;
+}
+
+.rstfooter-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
+}
+
+.rstfooter-col h3{
+    margin-bottom:25px;
+    color:#00ff88;
+}
+
+.rstfooter-col p{
+    color:#bbb;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.rstfooter-logo img{
+    width:160px;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+.rstfooter-social{
+    display:flex;
+    gap:15px;
+}
+
+.rstfooter-social a{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#222;
+    color:white;
+    text-decoration:none;
+    transition:.4s;
+}
+
+.rstfooter-social a:hover{
+    background:#00ff88;
+}
+
+.rstfooter-hours{
+    list-style:none;
+    padding:0;
+}
+
+.rstfooter-hours li{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    color:#bbb;
+}
+
+#rstfooterForm{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+#rstfooterForm input{
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+#rstfooterForm button{
+    padding:14px;
+    border:none;
+    background:#123e29;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+#rstfooterMsg{
+    display:block;
+    margin-top:10px;
+    color:#00ff88;
+}
+
+.rstfooter-bottom{
+    text-align:center;
+    border-top:1px solid #333;
+    margin-top:50px;
+    padding-top:20px;
+    color:#999;
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rstfooter-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rstfooter-container{
+        grid-template-columns:1fr;
+    }
+
+    .rstfooter-hours li{
+        flex-direction:column;
+        gap:5px;
+    }
+}
+</style>
+
+<script>
+    document.getElementById("rstfooterForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("rstfooterEmail").value.trim();
+    const msg = document.getElementById("rstfooterMsg");
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(emailPattern.test(email)){
+        msg.style.color = "#4CAF50";
+        msg.innerText = "Email verified ✓";
+
+        setTimeout(()=>{
+            window.location.href = "404.html";
+        },1500);
+    } else {
+        msg.style.color = "#ff7b7b";
+        msg.innerText = "Fill details correctly";
+    }
+});
+</script>
+
+
+</body>
+</html>
