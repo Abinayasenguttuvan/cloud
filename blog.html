@@ -241,11 +241,12 @@ body{
                 <i class="fas fa-times"></i>
             </div>
 
-            <a href="./index.html" class="active">Home</a>
+            <a href="./index.html" >Home</a>
             <a href="./about.html">About Us</a>
-            <a href="./blog.html">Blog</a>
+            <a href="./service.html">Services</a>
+            <a href="./blog.html" class="active">Blog</a>
             <a href="./contact.html">Contact Us</a>
-            <a href="./login.html" class="stkhd-btn">Login / Register</a>
+            <a href="./login.html" class="stkhd-btn">Login </a>
         </nav>
 
     </div>
@@ -274,19 +275,1115 @@ function stkhdCloseMenu(){
 </script>
 
 
+<section class="abthero-section">
+    <div class="abthero-overlay"></div>
+
+    <div class="abthero-content">
+        <h1>Blog</h1>
+
+        <div class="abthero-breadcrumb">
+            <!-- <a href="./index.html">Home</a> -->
+            <!-- <span>→</span> -->
+            <!-- <p>About Us</p> -->
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, esse.</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .abthero-section{
+    position:relative;
+    width:100%;
+    height:500px;
+    background:url("./cloud\ 1.webp") center center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.abthero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,0,0,.65),
+        rgba(0,20,10,.72)
+    );
+}
+
+.abthero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:0 20px;
+    animation:abtheroFade 1s ease;
+}
+
+@keyframes abtheroFade{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.abthero-content h1{
+    color:#fff;
+    font-size:72px;
+    font-weight:800;
+    margin-bottom:20px;
+    text-shadow:0 0 25px rgba(0,255,136,.25);
+}
+
+.abthero-breadcrumb{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.abthero-breadcrumb a{
+    color:#00ff88;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.abthero-breadcrumb a:hover{
+    text-shadow:0 0 12px #00ff88;
+}
+
+.abthero-breadcrumb span{
+    color:#fff;
+    font-size:18px;
+}
+
+.abthero-breadcrumb p{
+    color:#d5d5d5;
+    font-size:20px;
+    margin:0;
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .abthero-content h1{
+        font-size:58px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .abthero-section{
+        height:420px;
+    }
+
+    .abthero-content h1{
+        font-size:48px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .abthero-section{
+        height:320px;
+    }
+
+    .abthero-content h1{
+        font-size:34px;
+    }
+
+    .abthero-breadcrumb a,
+    .abthero-breadcrumb p{
+        font-size:16px;
+    }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+    .abthero-content h1{
+        font-size:28px;
+    }
+}
+</style>
+
+
+<section class="fcc-section">
+
+    <div class="fcc-container">
+
+        <!-- LEFT -->
+        <div class="fcc-image-box fcc-reveal">
+            <img src="./cloud backup and recovery.webp"
+                 alt="Cloud Future">
+
+            <div class="fcc-floating-card">
+                <h3>2030</h3>
+                <p>70% Businesses Cloud Native</p>
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="fcc-content fcc-reveal">
+            <span class="fcc-badge">BLOG INSIGHT</span>
+            <h2>The Future of Cloud Computing</h2>
+
+            <p>
+                Cloud computing is rapidly transforming how businesses operate,
+                innovate, and scale. Emerging technologies like AI, edge computing,
+                and serverless architecture are reshaping the future of digital infrastructure.
+            </p>
+
+            <p>
+                Organizations are moving toward hybrid and multi-cloud ecosystems
+                to improve flexibility, resilience, and performance while reducing
+                infrastructure costs.
+            </p>
+
+            <ul class="fcc-list">
+                <li>AI-powered Infrastructure</li>
+                <li>Serverless Architecture Growth</li>
+                <li>Edge Computing Expansion</li>
+                <li>Stronger Cloud Security</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<Style>
+    .fcc-section{
+    padding:100px 6%;
+    background:linear-gradient(135deg,#000,#071c12,#000);
+    overflow:hidden;
+}
+
+.fcc-container{
+    display:flex;
+    align-items:center;
+    gap:70px;
+}
+
+.fcc-image-box{
+    flex:1;
+    position:relative;
+}
+
+.fcc-image-box img{
+    width:100%;
+    border-radius:25px;
+    display:block;
+    box-shadow:0 0 35px rgba(82,255,117,.15);
+}
+
+.fcc-floating-card{
+    position:absolute;
+    right:-20px;
+    bottom:40px;
+    background:#52ff75;
+    color:#000;
+    padding:22px 28px;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(82,255,117,.3);
+}
+
+.fcc-floating-card h3{
+    font-size:34px;
+}
+
+.fcc-content{
+    flex:1;
+}
+
+.fcc-badge{
+    color:#52ff75;
+    font-weight:600;
+    letter-spacing:3px;
+}
+
+.fcc-content h2{
+    color:white;
+    font-size:52px;
+    margin:20px 0;
+}
+
+.fcc-content p{
+    color:#c9c9c9;
+    line-height:1.9;
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.fcc-list{
+    list-style:none;
+}
+
+.fcc-list li{
+    color:#fff;
+    margin-bottom:14px;
+    padding-left:22px;
+    position:relative;
+}
+
+.fcc-list li::before{
+    content:"■";
+    position:absolute;
+    left:0;
+    color:#52ff75;
+}
+
+/* Animation */
+.fcc-reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.fcc-reveal.fcc-show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .fcc-content h2{
+        font-size:42px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .fcc-container{
+        flex-direction:column;
+    }
+
+    .fcc-content{
+        text-align:center;
+    }
+
+    .fcc-list{
+        display:inline-block;
+        text-align:left;
+    }
+
+    .fcc-floating-card{
+        right:20px;
+        bottom:20px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .fcc-section{
+        padding:70px 20px;
+    }
+
+    .fcc-content h2{
+        font-size:32px;
+    }
+
+    .fcc-content p{
+        font-size:16px;
+    }
+
+    .fcc-floating-card{
+        position:relative;
+        right:auto;
+        bottom:auto;
+        margin-top:20px;
+        width:100%;
+        text-align:center;
+    }
+}
+</Style>
+
+<script>
+    const fccObserver = new IntersectionObserver((entries)=>{
+        entries.forEach((entry,index)=>{
+            if(entry.isIntersecting){
+                setTimeout(()=>{
+                    entry.target.classList.add("fcc-show");
+                }, index * 250);
+            }
+        });
+    },{threshold:0.2});
+    
+    document.querySelectorAll(".fcc-reveal").forEach(el=>{
+        fccObserver.observe(el);
+    });
+    </script>
+
+<section class="cbg-section">
+
+    <div class="cbg-heading cbg-reveal">
+        <span class="cbg-badge">OUR BLOGS</span>
+        <h2>Latest Cloud Insights</h2>
+        <p>Stay updated with the latest cloud trends, security tips and infrastructure strategies.</p>
+    </div>
+
+    <div class="cbg-grid">
+
+        <div class="cbg-card cbg-reveal">
+            <img src="./cl.webp" alt="">
+            <div class="cbg-content">
+                <span class="cbg-category">Cloud Computing</span>
+                <small>June 2026</small>
+                <h3>Future of Cloud Infrastructure</h3>
+                <p>Explore how AI and automation are reshaping cloud ecosystems.</p>
+            </div>
+        </div>
+
+        <div class="cbg-card cbg-reveal">
+            <img src="./cloud 2.webp" alt="">
+            <div class="cbg-content">
+                <span class="cbg-category">Security</span>
+                <small>June 2026</small>
+                <h3>Cloud Security Best Practices</h3>
+                <p>Protect workloads with encryption and threat detection strategies.</p>
+            </div>
+        </div>
+
+        <div class="cbg-card cbg-reveal">
+            <img src="./cloud migration.webp" alt="">
+            <div class="cbg-content">
+                <span class="cbg-category">Migration</span>
+                <small>June 2026</small>
+                <h3>Zero Downtime Migration</h3>
+                <p>Learn how to migrate legacy systems to the cloud without downtime.</p>
+            </div>
+        </div>
+
+        <div class="cbg-card cbg-reveal">
+            <img src="./cloud analytics.webp" alt="">
+            <div class="cbg-content">
+                <span class="cbg-category">Analytics</span>
+                <small>June 2026</small>
+                <h3>Cloud Analytics Explained</h3>
+                <p>Transform infrastructure data into actionable business insights.</p>
+            </div>
+        </div>
+
+        <div class="cbg-card cbg-reveal">
+            <img src="./devops automation.webp" alt="">
+            <div class="cbg-content">
+                <span class="cbg-category">DevOps</span>
+                <small>June 2026</small>
+                <h3>DevOps Automation Tools</h3>
+                <p>Improve CI/CD pipelines with modern DevOps cloud tools.</p>
+            </div>
+        </div>
+
+        <div class="cbg-card cbg-reveal">
+            <img src="./cloud backup and recovery.webp" alt="">
+            <div class="cbg-content">
+                <span class="cbg-category">AI Cloud</span>
+                <small>June 2026</small>
+                <h3>AI in Cloud Computing</h3>
+                <p>Discover how AI optimizes resource allocation and scaling.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    .cbg-section{
+    padding:100px 6%;
+    background:linear-gradient(135deg,#000,#071b12,#000);
+    overflow:hidden;
+}
+
+.cbg-heading{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.cbg-badge{
+    color:#52ff75;
+    letter-spacing:3px;
+    font-weight:600;
+}
+
+.cbg-heading h2{
+    color:#fff;
+    font-size:52px;
+    margin:20px 0 15px;
+}
+
+.cbg-heading p{
+    color:#bdbdbd;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* GRID */
+.cbg-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.cbg-card{
+    background:#111;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid rgba(82,255,117,.12);
+    transition:.4s;
+}
+
+.cbg-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 0 30px rgba(82,255,117,.15);
+    border-color:#52ff75;
+}
+
+.cbg-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    display:block;
+}
+
+.cbg-content{
+    padding:25px;
+}
+
+.cbg-category{
+    display:inline-block;
+    background:#52ff75;
+    color:#000;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.cbg-content small{
+    display:block;
+    color:#8a8a8a;
+    margin:14px 0;
+}
+
+.cbg-content h3{
+    color:white;
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.cbg-content p{
+    color:#bdbdbd;
+    line-height:1.7;
+}
+
+/* animation */
+.cbg-reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.cbg-reveal.cbg-show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* laptop */
+@media(max-width:1200px){
+    .cbg-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* tablet */
+@media(max-width:768px){
+    .cbg-heading h2{
+        font-size:34px;
+    }
+
+    .cbg-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* mobile */
+@media(max-width:480px){
+    .cbg-section{
+        padding:70px 20px;
+    }
+
+    .cbg-content h3{
+        font-size:20px;
+    }
+
+    .cbg-card img{
+        height:200px;
+    }
+}
+</style>
+
+<script>
+    const cbgObserver = new IntersectionObserver((entries)=>{
+        entries.forEach((entry,index)=>{
+            if(entry.isIntersecting){
+                setTimeout(()=>{
+                    entry.target.classList.add("cbg-show");
+                }, index * 250);
+            }
+        });
+    },{threshold:0.15});
+    
+    document.querySelectorAll(".cbg-reveal").forEach(el=>{
+        cbgObserver.observe(el);
+    });
+    </script>
+
+
+<section class="cloudsol-section">
+    <div class="cloudsol-heading">
+        <span>CLOUD SOLUTIONS</span>
+        <h2>Explore Our <span>Cloud Services</span></h2>
+        <p>
+            Powerful, scalable and secure cloud services to accelerate your business
+            with innovation, reliability and performance.
+        </p>
+    </div>
+
+    <div class="cloudsol-grid">
+
+        <!-- Large Left Card -->
+        <div class="cloudsol-card cloudsol-large">
+            <img src="./cloud 1.webp" alt="">
+            <div class="cloudsol-overlay"></div>
+            <div class="cloudsol-content">
+                <small>CORE SERVICE</small>
+                <h3>Cloud Infrastructure</h3>
+                <p>
+                    High-performance cloud infrastructure built for scalability,
+                    reliability and uptime.
+                </p>
+                <a href="./404.html">Learn More →</a>
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="cloudsol-right">
+
+            <div class="cloudsol-card cloudsol-wide">
+                <img src="./cloud migration.webp" alt="">
+                <div class="cloudsol-overlay"></div>
+                <div class="cloudsol-content">
+                    <small>SOLUTION</small>
+                    <h3>Cloud Migration</h3>
+                    <p>Seamlessly migrate workloads with zero downtime.</p>
+                    <a href="./404.html">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="cloudsol-small-grid">
+
+                <div class="cloudsol-card">
+                    <img src="./cloud security.webp" alt="">
+                    <div class="cloudsol-overlay"></div>
+                    <div class="cloudsol-content">
+                        <small>SOLUTION</small>
+                        <h3>Cloud Security</h3>
+                        <p>Enterprise-grade protection.</p>
+                        <a href="./404.html">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="cloudsol-card">
+                    <img src="./cloud 2.webp" alt="">
+                    <div class="cloudsol-overlay"></div>
+                    <div class="cloudsol-content">
+                        <small>SOLUTION</small>
+                        <h3>Cloud Storage</h3>
+                        <p>Secure scalable storage.</p>
+                        <a href="./404.html">Learn More →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.cloudsol-section{
+    padding:100px 5%;
+    background:#050505;
+    font-family:Arial,sans-serif;
+}
+
+.cloudsol-heading{
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+    margin-bottom:70px;
+}
+
+.cloudsol-heading span{
+    color:#00ff88;
+    font-weight:600;
+    letter-spacing:3px;
+}
+
+.cloudsol-heading h2{
+    font-size:58px;
+    color:#fff;
+    margin:20px 0;
+}
+
+.cloudsol-heading h2 span{
+    color:#00ff88;
+}
+
+.cloudsol-heading p{
+    color:#bbb;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.cloudsol-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1.5fr;
+    gap:30px;
+}
+
+.cloudsol-right{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.cloudsol-small-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.cloudsol-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+    min-height:320px;
+    cursor:pointer;
+    border:1px solid rgba(0,255,136,.2);
+}
+
+.cloudsol-large{
+    min-height:720px;
+}
+
+.cloudsol-wide{
+    min-height:340px;
+}
+
+.cloudsol-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .7s ease;
+}
+
+.cloudsol-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.9),
+        rgba(0,0,0,.35)
+    );
+}
+
+.cloudsol-content{
+    position:absolute;
+    left:35px;
+    bottom:35px;
+    z-index:2;
+    color:#fff;
+}
+
+.cloudsol-content small{
+    color:#00ff88;
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+.cloudsol-content h3{
+    font-size:46px;
+    margin:12px 0;
+    line-height:1.2;
+}
+
+.cloudsol-wide .cloudsol-content h3{
+    font-size:40px;
+}
+
+.cloudsol-small-grid .cloudsol-content h3{
+    font-size:30px;
+}
+
+.cloudsol-content p{
+    color:#ddd;
+    max-width:450px;
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.cloudsol-content a{
+    color:#00ff88;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* Hover Animation */
+.cloudsol-card:hover img{
+    transform:scale(1.12);
+}
+
+.cloudsol-card:not(:hover) img{
+    transform:scale(1);
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .cloudsol-heading h2{
+        font-size:46px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .cloudsol-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cloudsol-large{
+        min-height:500px;
+    }
+
+    .cloudsol-heading h2{
+        font-size:38px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .cloudsol-section{
+        padding:70px 20px;
+    }
+
+    .cloudsol-small-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cloudsol-heading h2{
+        font-size:30px;
+    }
+
+    .cloudsol-heading p{
+        font-size:16px;
+    }
+
+    .cloudsol-card,
+    .cloudsol-wide,
+    .cloudsol-large{
+        min-height:300px;
+    }
+
+    .cloudsol-content{
+        left:20px;
+        bottom:20px;
+    }
+
+    .cloudsol-content h3,
+    .cloudsol-wide .cloudsol-content h3,
+    .cloudsol-small-grid .cloudsol-content h3{
+        font-size:24px;
+    }
+
+    .cloudsol-content p{
+        font-size:14px;
+    }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+    .cloudsol-heading h2{
+        font-size:24px;
+    }
+
+    .cloudsol-content h3{
+        font-size:20px !important;
+    }
+
+    .cloudsol-content p{
+        display:none;
+    }
+}
+</style>
+
+<section class="cfq-section">
+
+    <div class="cfq-heading cfq-reveal">
+        <span class="cfq-badge">FAQ</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>
+            Find answers to common questions about our cloud services,
+            hosting, migration and security solutions.
+        </p>
+    </div>
+
+    <div class="cfq-container">
+
+        <div class="cfq-item cfq-reveal">
+            <button class="cfq-question">
+                What is cloud hosting?
+                <span>+</span>
+            </button>
+            <div class="cfq-answer">
+                <p>
+                    Cloud hosting uses multiple connected servers to improve
+                    performance, scalability, and uptime compared to traditional hosting.
+                </p>
+            </div>
+        </div>
+
+        <div class="cfq-item cfq-reveal">
+            <button class="cfq-question">
+                Do you provide cloud migration?
+                <span>+</span>
+            </button>
+            <div class="cfq-answer">
+                <p>
+                    Yes, we help businesses migrate applications, databases,
+                    and infrastructure to the cloud with minimal downtime.
+                </p>
+            </div>
+        </div>
+
+        <div class="cfq-item cfq-reveal">
+            <button class="cfq-question">
+                How secure is your cloud platform?
+                <span>+</span>
+            </button>
+            <div class="cfq-answer">
+                <p>
+                    Our platform includes encryption, firewall protection,
+                    DDoS defense, and 24/7 security monitoring.
+                </p>
+            </div>
+        </div>
+
+        <div class="cfq-item cfq-reveal">
+            <button class="cfq-question">
+                Do you offer 24/7 support?
+                <span>+</span>
+            </button>
+            <div class="cfq-answer">
+                <p>
+                    Yes, our cloud experts are available 24/7 to provide
+                    technical support and issue resolution.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    .cfq-section{
+    padding:100px 6%;
+    background:linear-gradient(135deg,#000,#071b12,#000);
+    overflow:hidden;
+}
+
+.cfq-heading{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.cfq-badge{
+    color:#52ff75;
+    font-weight:600;
+    letter-spacing:3px;
+}
+
+.cfq-heading h2{
+    color:#fff;
+    font-size:52px;
+    margin:20px 0;
+}
+
+.cfq-heading p{
+    color:#bdbdbd;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.cfq-container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.cfq-item{
+    background:#111;
+    margin-bottom:20px;
+    border-radius:18px;
+    border:1px solid rgba(82,255,117,.15);
+    overflow:hidden;
+    transition:.4s;
+}
+
+.cfq-item:hover{
+    border-color:#52ff75;
+}
+
+.cfq-question{
+    width:100%;
+    background:none;
+    border:none;
+    color:white;
+    padding:28px;
+    font-size:20px;
+    font-weight:600;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    text-align:left;
+}
+
+.cfq-question span{
+    color:#52ff75;
+    font-size:30px;
+    transition:.3s;
+}
+
+.cfq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .5s ease;
+}
+
+.cfq-answer p{
+    padding:0 28px 28px;
+    color:#bdbdbd;
+    line-height:1.8;
+}
+
+.cfq-item.cfq-open .cfq-answer{
+    max-height:300px;
+}
+
+.cfq-item.cfq-open .cfq-question span{
+    transform:rotate(45deg);
+}
+
+/* Animation */
+.cfq-reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.cfq-reveal.cfq-show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .cfq-heading h2{
+        font-size:42px;
+    }
+}
+
+/* Tablet */
+@media(max-width:768px){
+    .cfq-heading h2{
+        font-size:32px;
+    }
+
+    .cfq-question{
+        font-size:18px;
+        padding:22px;
+    }
+}
+
+/* Mobile */
+@media(max-width:480px){
+    .cfq-section{
+        padding:70px 20px;
+    }
+
+    .cfq-question{
+        font-size:16px;
+        padding:18px;
+    }
+
+    .cfq-answer p{
+        padding:0 18px 18px;
+        font-size:14px;
+    }
+}
+</style>
+
+<script>
+    /* FAQ Toggle */
+    document.querySelectorAll(".cfq-question").forEach(question=>{
+        question.addEventListener("click",function(){
+            const parent=this.parentElement;
+    
+            document.querySelectorAll(".cfq-item").forEach(item=>{
+                if(item !== parent){
+                    item.classList.remove("cfq-open");
+                }
+            });
+    
+            parent.classList.toggle("cfq-open");
+        });
+    });
+    
+    /* Scroll Reveal */
+    const cfqObserver = new IntersectionObserver((entries)=>{
+        entries.forEach((entry,index)=>{
+            if(entry.isIntersecting){
+                setTimeout(()=>{
+                    entry.target.classList.add("cfq-show");
+                }, index * 200);
+            }
+        });
+    },{threshold:0.15});
+    
+    document.querySelectorAll(".cfq-reveal").forEach(el=>{
+        cfqObserver.observe(el);
+    });
+    </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <footer class="rstfooter-section">
 
     <div class="rstfooter-container">
 
         <!-- Column 1 -->
-        <div class="rstfooter-col">
+        <div class="rstfooter-col rstfooter-first-col">
             <a href="index.html" class="rstfooter-logo">
                 <img src="./white.webp" alt="Stackly Logo"
-style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) saturate(2874%) hue-rotate(92deg) brightness(103%) contrast(105%);">
-    </a>
+                style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) saturate(2874%) hue-rotate(92deg) brightness(103%) contrast(105%);">
+            </a>
+
             <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe, rerum!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, rerum!
             </p>
 
             <div class="rstfooter-social">
@@ -313,7 +1410,7 @@ style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) 
         <div class="rstfooter-col">
             <h3>Contact Us</h3>
 
-            <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
+            <p><i class="fas fa-map-marker-alt"></i> Salem Tamil Nadu</p>
             <p><i class="fas fa-phone"></i> +91 9876543210</p>
             <p><i class="fas fa-envelope"></i> booking@thestackly.com</p>
         </div>
@@ -340,21 +1437,37 @@ style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) 
 </footer>
 
 <style>
-    .rstfooter-section{
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.rstfooter-section{
     background:#111;
     color:white;
-    padding:70px  20px;
+    padding:70px 20px;
 }
 
 .rstfooter-container{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:40px;
+    align-items:start;
+}
+
+.rstfooter-col{
+    display:flex;
+    flex-direction:column;
+    height:100%;
 }
 
 .rstfooter-col h3{
     margin-bottom:25px;
     color:#00ff88;
+    min-height:40px; /* makes all headings align */
+    display:flex;
+    align-items:center;
 }
 
 .rstfooter-col p{
@@ -372,6 +1485,7 @@ style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) 
 .rstfooter-social{
     display:flex;
     gap:15px;
+    margin-top:10px;
 }
 
 .rstfooter-social a{
@@ -389,6 +1503,7 @@ style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) 
 
 .rstfooter-social a:hover{
     background:#00ff88;
+    color:black;
 }
 
 .rstfooter-hours{
@@ -401,6 +1516,7 @@ style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) 
     justify-content:space-between;
     margin-bottom:15px;
     color:#bbb;
+    gap:20px;
 }
 
 #rstfooterForm{
@@ -457,11 +1573,15 @@ style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) 
         flex-direction:column;
         gap:5px;
     }
+
+    .rstfooter-col h3{
+        min-height:auto;
+    }
 }
 </style>
 
 <script>
-    document.getElementById("rstfooterForm").addEventListener("submit", function(e){
+document.getElementById("rstfooterForm").addEventListener("submit", function(e){
     e.preventDefault();
 
     const email = document.getElementById("rstfooterEmail").value.trim();

@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Cloud Services</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    min-height:200vh;
+    background:#050505;
+}
+
+/* HEADER */
+.stkhd-header{
+    position:sticky;
+    top:0;
+    width:100%;
+    z-index:9999;
+    background:rgba(8,8,8,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,255,136,.15);
+}
+
+.stkhd-container{
+    width:100%;
+    padding:16px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* LOGO */
+.stkhd-logo{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    gap:12px;
+}
+
+.stkhd-logo img{
+    height:55px;
+    display:block;
+}
+
+.stkhd-logo-text{
+    color:#00ff88;
+    font-size:28px;
+    font-weight:800;
+}
+
+/* NAV */
+.stkhd-nav{
+    display:flex;
+    align-items:center;
+    gap:32px;
+}
+
+.stkhd-nav a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+    position:relative;
+}
+
+.stkhd-nav a:hover,
+.stkhd-nav a.active{
+    color:#00ff88;
+}
+
+.stkhd-nav a.active::after,
+.stkhd-nav a:hover::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:100%;
+    height:2px;
+    background:#00ff88;
+}
+
+/* BUTTON */
+.stkhd-btn{
+    background:#00ff88;
+    color:#000 !important;
+    padding:14px 26px;
+    border-radius:50px;
+    font-weight:700;
+}
+
+.stkhd-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(0,255,136,.3);
+}
+
+/* HAMBURGER */
+.stkhd-menu-btn,
+.stkhd-close-btn{
+    display:none;
+    color:#fff;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* OVERLAY */
+.stkhd-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:9998;
+}
+
+.stkhd-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .stkhd-nav{
+        gap:22px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .stkhd-nav{
+        gap:16px;
+    }
+
+    .stkhd-btn{
+        padding:12px 18px;
+        font-size:14px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .stkhd-menu-btn{
+        display:block;
+    }
+
+    .stkhd-nav{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:300px;
+        height:100vh;
+        background:#0b0b0b;
+        border-left:1px solid rgba(0,255,136,.2);
+        flex-direction:column;
+        justify-content:center;
+        gap:30px;
+        transition:.45s ease;
+        z-index:9999;
+    }
+
+    .stkhd-nav.active{
+        right:0;
+    }
+
+    .stkhd-close-btn{
+        display:block;
+        position:absolute;
+        top:25px;
+        right:25px;
+    }
+
+    .stkhd-nav a{
+        font-size:20px;
+    }
+
+    .stkhd-btn{
+        margin-top:10px;
+    }
+
+    .stkhd-logo img{
+        height:46px;
+    }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+    .stkhd-nav{
+        width:85%;
+    }
+
+    .stkhd-logo-text{
+        font-size:22px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="stkhd-overlay" id="stkhdOverlay" onclick="stkhdCloseMenu()"></div>
+
+<header class="stkhd-header">
+    <div class="stkhd-container">
+
+        <!-- Logo -->
+        <a href="./index.html" class="stkhd-logo">
+            <img src="./white.webp" alt="Stackly Logo"
+            style="filter:brightness(0) saturate(100%) invert(73%) sepia(94%) saturate(2874%) hue-rotate(92deg) brightness(103%) contrast(105%);">
+        </a>
+
+        <!-- Hamburger -->
+        <div class="stkhd-menu-btn" onclick="stkhdOpenMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- Nav -->
+        <nav class="stkhd-nav" id="stkhdNav">
+
+            <div class="stkhd-close-btn" onclick="stkhdCloseMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <a href="./index.html" >Home</a>
+            <a href="./about.html">About Us</a>
+            <a href="./service.html" class="active">Services</a>
+            <a href="./blog.html">Blog</a>
+            <a href="./contact.html">Contact Us</a>
+            <a href="./login.html" class="stkhd-btn">Login </a>
+        </nav>
+
+    </div>
+</header>
+
+<script>
+const navLinks=document.querySelectorAll(".stkhd-nav a");
+
+navLinks.forEach(link=>{
+    link.addEventListener("click",function(){
+        navLinks.forEach(item=>item.classList.remove("active"));
+        this.classList.add("active");
+        stkhdCloseMenu();
+    });
+});
+
+function stkhdOpenMenu(){
+    document.getElementById("stkhdNav").classList.add("active");
+    document.getElementById("stkhdOverlay").classList.add("show");
+}
+
+function stkhdCloseMenu(){
+    document.getElementById("stkhdNav").classList.remove("active");
+    document.getElementById("stkhdOverlay").classList.remove("show");
+}
+</script>
+
+
+
+<section class="abthero-section">
+    <div class="abthero-overlay"></div>
+
+    <div class="abthero-content">
+        <h1>Services</h1>
+
+        <div class="abthero-breadcrumb">
+            <!-- <a href="./index.html">Home</a> -->
+            <!-- <span>→</span> -->
+            <!-- <p>About Us</p> -->
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, esse.</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .abthero-section{
+    position:relative;
+    width:100%;
+    height:500px;
+    background:url("./cloud\ 1.webp") center center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.abthero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,0,0,.65),
+        rgba(0,20,10,.72)
+    );
+}
+
+.abthero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:0 20px;
+    animation:abtheroFade 1s ease;
+}
+
+@keyframes abtheroFade{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.abthero-content h1{
+    color:#fff;
+    font-size:72px;
+    font-weight:800;
+    margin-bottom:20px;
+    text-shadow:0 0 25px rgba(0,255,136,.25);
+}
+
+.abthero-breadcrumb{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.abthero-breadcrumb a{
+    color:#00ff88;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.abthero-breadcrumb a:hover{
+    text-shadow:0 0 12px #00ff88;
+}
+
+.abthero-breadcrumb span{
+    color:#fff;
+    font-size:18px;
+}
+
+.abthero-breadcrumb p{
+    color:#d5d5d5;
+    font-size:20px;
+    margin:0;
+}
+
+/* Laptop */
+@media(max-width:1200px){
+    .abthero-content h1{
+        font-size:58px;
+    }
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .abthero-section{
+        height:420px;
+    }
+
+    .abthero-content h1{
+        font-size:48px;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .abthero-section{
+        height:320px;
+    }
+
+    .abthero-content h1{
+        font-size:34px;
+    }
+
+    .abthero-breadcrumb a,
+    .abthero-breadcrumb p{
+        font-size:16px;
+    }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+    .abthero-content h1{
+        font-size:28px;
+    }
+}
+</style>
+
+
+<section class="services-section">
+    <div class="services-header">
+        <h4>OUR SERVICES</h4>
+        <h2>Cloud Computing Solutions</h2>
+        <p>
+            Powerful cloud services designed to accelerate business growth,
+            improve security and maximize scalability.
+        </p>
+    </div>
+
+    <div class="services-grid">
+
+        <div class="service-card reveal">
+            <img src="./cloud 2.webp" alt="Cloud Storage">
+            <h3>Cloud Storage</h3>
+            <p>Secure and scalable storage for enterprise workloads.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="./cloud migration.webp" alt="Migration">
+            <h3>Cloud Migration</h3>
+            <p>Seamlessly migrate workloads with zero downtime.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="./cloud security.webp" alt="Security">
+            <h3>Cloud Security</h3>
+            <p>Advanced monitoring and threat protection.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="cloud backup and recovery.webp" alt="Backup">
+            <h3>Backup & Recovery</h3>
+            <p>Automated backups and disaster recovery planning.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="./devops automation.webp" alt="DevOps">
+            <h3>DevOps Automation</h3>
+            <p>Accelerate deployments with CI/CD automation.</p>
+        </div>
+
+        <div class="service-card reveal">
+            <img src="./cloud analytics.webp" alt="Analytics">
+            <h3>Cloud Analytics</h3>
+            <p>Real-time analytics for better business decisions.</p>
+        </div>
+
+    </div>
+</section>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    font-family:Arial,sans-serif;
+}
+
+/* SECTION */
+.services-section{
+    padding:100px 5%;
+    background:linear-gradient(180deg,#050505,#081c12);
+}
+
+.services-header{
+    text-align:center;
+    max-width:850px;
+    margin:auto;
+    margin-bottom:70px;
+}
+
+.services-header h4{
+    color:#00ff88;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+.services-header h2{
+    color:white;
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.services-header p{
+    color:#bbb;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* GRID */
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+/* CARD */
+.service-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,255,136,.15);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    backdrop-filter:blur(12px);
+    transition:.4s;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(0,255,136,.2);
+}
+
+.service-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.service-card h3{
+    color:white;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.service-card p{
+    color:#bcbcbc;
+    line-height:1.7;
+}
+
+/* SCROLL ANIMATION */
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 0.9s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* LAPTOP */
+@media(max-width:1200px){
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* TABLET */
+@media(max-width:992px){
+    .services-header h2{
+        font-size:2.4rem;
+    }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .services-header h2{
+        font-size:2rem;
+    }
+
+    .services-header p{
+        font-size:16px;
+    }
+
+    .service-card img{
+        height:200px;
+    }
+}
+
+/* SMALL MOBILE */
+@media(max-width:480px){
+    .services-section{
+        padding:70px 20px;
+    }
+
+    .services-header h2{
+        font-size:1.7rem;
+    }
+}
+</style>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry,index)=>{
+        if(entry.isIntersecting){
+            setTimeout(()=>{
+                entry.target.classList.add('active');
+            }, index * 250); // cards appear one by one
+        }
+    });
+},{threshold:0.2});
+
+reveals.forEach(card=>{
+    observer.observe(card);
+});
+</script>
+
+
+<section class="csx-services-section">
+
+    <div class="csx-heading csx-reveal">
+        <span class="csx-badge">OUR SERVICES</span>
+        <h2>Interactive Cloud Solutions</h2>
+    </div>
+
+    <div class="csx-tabs csx-reveal">
+        <button class="csx-tab-btn csx-active" onclick="csxChangeService(0)">Hosting</button>
+        <button class="csx-tab-btn" onclick="csxChangeService(1)">Security</button>
+        <button class="csx-tab-btn" onclick="csxChangeService(2)">Migration</button>
+    </div>
+
+    <div class="csx-box csx-reveal">
+        <div class="csx-image-box">
+            <img id="csxServiceImg"
+            src="./cloud 1.webp">
+        </div>
+
+        <div class="csx-content-box">
+            <h3 id="csxTitle">Cloud Hosting</h3>
+            <p id="csxDesc">
+                Reliable cloud hosting with enterprise performance.
+            </p>
+
+            <ul id="csxList">
+                <li>99.99% uptime</li>
+                <li>SSD storage</li>
+                <li>Global servers</li>
+                <li>Auto scaling</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+<style>
+    /* SECTION */
+.csx-services-section{
+    padding:100px 6%;
+    background:linear-gradient(135deg,#000000,#081c12,#000);
+    overflow:hidden;
+}
+
+.csx-heading{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.csx-badge{
+    color:#59ff88;
+    font-weight:600;
+    letter-spacing:3px;
+}
+
+.csx-heading h2{
+    color:#fff;
+    font-size:52px;
+    margin-top:20px;
+}
+
+/* TABS */
+.csx-tabs{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:60px;
+}
+
+.csx-tab-btn{
+    padding:16px 30px;
+    background:#111;
+    border:1px solid #59ff88;
+    color:#59ff88;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.csx-tab-btn:hover,
+.csx-tab-btn.csx-active{
+    background:#59ff88;
+    color:#000;
+}
+
+/* BOX */
+.csx-box{
+    display:flex;
+    gap:50px;
+    align-items:center;
+    background:#01211c;
+    border-radius:30px;
+    padding:40px;
+}
+
+.csx-image-box{
+    flex:1;
+}
+
+.csx-image-box img{
+    width:100%;
+    border-radius:20px;
+}
+
+.csx-content-box{
+    flex:1;
+}
+
+.csx-content-box h3{
+    color:#59ff88;
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.csx-content-box p{
+    color:#ccc;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.csx-content-box ul{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.csx-content-box li{
+    color:#fff;
+}
+
+/* ANIMATION */
+.csx-reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s;
+}
+
+.csx-reveal.csx-show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* TABLET */
+@media(max-width:992px){
+    .csx-box{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .csx-services-section{
+        padding:70px 20px;
+    }
+
+    .csx-heading h2{
+        font-size:32px;
+    }
+
+    .csx-tab-btn{
+        width:100%;
+    }
+
+    .csx-content-box h3{
+        font-size:26px;
+    }
+
+    .csx-content-box ul{
+        grid-template-columns:1fr;
+        text-align:left;
+    }
+}
+</style>
+
+<script>
+    const csxServices = [
+    {
+    title:"Cloud Hosting",
+    desc:"Reliable cloud hosting with enterprise performance.",
+    img:"cloud analytics.webp",
+    list:["99.99% uptime","SSD storage","Global servers","Auto scaling"]
+    },
+    {
+    title:"Advanced Security",
+    desc:"Enterprise security with monitoring and threat detection.",
+    img:"devops automation.webp",
+    list:["Firewall","DDoS","Encryption","Threat alerts"]
+    },
+    {
+    title:"Cloud Migration",
+    desc:"Move infrastructure securely with zero downtime.",
+    img:"cloud migration.webp",
+    list:["Migration","Backup","Transfer","Planning"]
+    }
+    ];
+    
+    function csxChangeService(index){
+        document.getElementById("csxTitle").innerText =
+            csxServices[index].title;
+    
+        document.getElementById("csxDesc").innerText =
+            csxServices[index].desc;
+    
+        document.getElementById("csxServiceImg").src =
+            csxServices[index].img;
+    
+        let html="";
+        csxServices[index].list.forEach(item=>{
+            html += `<li>${item}</li>`;
+        });
+    
+        document.getElementById("csxList").innerHTML = html;
+    
+        document.querySelectorAll(".csx-tab-btn").forEach(btn=>{
+            btn.classList.remove("csx-active");
+        });
+    
+        document.querySelectorAll(".csx-tab-btn")[index]
+            .classList.add("csx-active");
+    }
+    
+    /* Reveal animation */
+    const csxObserver = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+    if(entry.isIntersecting){
+    entry.target.classList.add("csx-show");
+    }
+    });
+    });
+    
+    document.querySelectorAll(".csx-reveal").forEach(el=>{
+    csxObserver.observe(el);
+    });
+    </script>
+
+
+<section class="cpw-section">
+
+    <div class="cpw-heading cpw-reveal">
+        <span class="cpw-badge">WORKFLOW</span>
+        <h2>Our Cloud Process</h2>
+        <p>From planning to deployment, we ensure a smooth cloud journey.</p>
+    </div>
+
+    <div class="cpw-container">
+
+        <div class="cpw-card cpw-reveal">
+            <div class="cpw-icon">01</div>
+            <h3>Consultation</h3>
+            <p>Understand business requirements and infrastructure needs.</p>
+        </div>
+
+        <div class="cpw-card cpw-reveal">
+            <div class="cpw-icon">02</div>
+            <h3>Planning</h3>
+            <p>Design architecture with scalability and performance in mind.</p>
+        </div>
+
+        <div class="cpw-card cpw-reveal">
+            <div class="cpw-icon">03</div>
+            <h3>Deployment</h3>
+            <p>Deploy secure cloud infrastructure with automation.</p>
+        </div>
+
+        <div class="cpw-card cpw-reveal">
+            <div class="cpw-icon">04</div>
+            <h3>Monitoring</h3>
+            <p>Continuous monitoring, optimization and support 24/7.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    /* SECTION */
+.cpw-section{
+    padding:100px 6%;
+    background:linear-gradient(135deg,#000,#071b12,#000);
+    overflow:hidden;
+}
+
+.cpw-heading{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.cpw-badge{
+    color:#52ff75;
+    letter-spacing:3px;
+    font-weight:600;
+}
+
+.cpw-heading h2{
+    color:#fff;
+    font-size:52px;
+    margin:20px 0 12px;
+}
+
+.cpw-heading p{
+    color:#bdbdbd;
+    font-size:18px;
+}
+
+/* CONTAINER */
+.cpw-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    position:relative;
+}
+
+/* connection line */
+.cpw-container::before{
+    content:"";
+    position:absolute;
+    top:50px;
+    left:10%;
+    width:80%;
+    height:2px;
+    background:rgba(82,255,117,.25);
+    z-index:0;
+}
+
+/* CARD */
+.cpw-card{
+    position:relative;
+    z-index:2;
+    background:#111;
+    border:1px solid rgba(82,255,117,.15);
+    border-radius:24px;
+    padding:35px 25px;
+    text-align:center;
+    transition:.4s;
+}
+
+.cpw-card:hover{
+    transform:translateY(-12px);
+    border-color:#52ff75;
+    box-shadow:0 0 30px rgba(82,255,117,.15);
+}
+
+.cpw-icon{
+    width:90px;
+    height:90px;
+    margin:auto;
+    border-radius:50%;
+    background:#52ff75;
+    color:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.cpw-card h3{
+    color:#fff;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.cpw-card p{
+    color:#bbb;
+    line-height:1.7;
+}
+
+/* animation */
+.cpw-reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.cpw-reveal.cpw-show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* LAPTOP */
+@media(max-width:1200px){
+    .cpw-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .cpw-container::before{
+        display:none;
+    }
+}
+
+/* TABLET */
+@media(max-width:768px){
+    .cpw-heading h2{
+        font-size:34px;
+    }
+
+    .cpw-container{
+        grid-template-columns:1fr;
+    }
+}
+
+/* MOBILE */
+@media(max-width:480px){
+    .cpw-section{
+        padding:70px 20px;
+    }
+
+    .cpw-card{
+        padding:28px 18px;
+    }
+
+    .cpw-icon{
+        width:70px;
+        height:70px;
+        font-size:22px;
+    }
+
+    .cpw-card h3{
+        font-size:20px;
+    }
+}
+</style>
+
+<script>
+    const cpwObserver = new IntersectionObserver((entries)=>{
+        entries.forEach((entry,index)=>{
+            if(entry.isIntersecting){
+                setTimeout(()=>{
+                    entry.target.classList.add("cpw-show");
+                }, index * 250);
+            }
+        });
+    },{threshold:0.2});
+    
+    document.querySelectorAll(".cpw-reveal").forEach(el=>{
+        cpwObserver.observe(el);
+    });
+    </script>
+
+
+<section class="hcprice-section">
+    <div class="hcprice-header">
+        <span>PRICING PLANS</span>
+        <h2>Choose Your Cloud Plan</h2>
+        <p>
+            Flexible pricing plans for startups, enterprises and large-scale businesses.
+        </p>
+    </div>
+
+    <div class="hcprice-grid">
+
+        <!-- Card 1 -->
+        <div class="hcprice-card hcprice-reveal">
+            <span class="hcprice-corner tl"></span>
+            <span class="hcprice-corner tr"></span>
+            <span class="hcprice-corner bl"></span>
+            <span class="hcprice-corner br"></span>
+
+            <h3>Starter</h3>
+            <div class="hcprice-price">$49 <span>/month</span></div>
+
+            <ul>
+                <li>☁ 100 GB Storage</li>
+                <li>⚡ 2 vCPU</li>
+                <li>🧠 4 GB RAM</li>
+                <li>🔒 Basic Security</li>
+                <li>📧 Email Support</li>
+            </ul>
+
+            <a href="./404.html">Get Started</a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="hcprice-card hcprice-featured hcprice-reveal">
+            <span class="hcprice-corner tl"></span>
+            <span class="hcprice-corner tr"></span>
+            <span class="hcprice-corner bl"></span>
+            <span class="hcprice-corner br"></span>
+
+            <div class="hcprice-badge">Most Popular</div>
+
+            <h3>Business</h3>
+            <div class="hcprice-price">$149 <span>/month</span></div>
+
+            <ul>
+                <li>☁ 1 TB Storage</li>
+                <li>⚡ 8 vCPU</li>
+                <li>🧠 16 GB RAM</li>
+                <li>🛡 Advanced Security</li>
+                <li>📞 24/7 Support</li>
+            </ul>
+
+            <a href="./404.html">Choose Plan</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="hcprice-card hcprice-reveal">
+            <span class="hcprice-corner tl"></span>
+            <span class="hcprice-corner tr"></span>
+            <span class="hcprice-corner bl"></span>
+            <span class="hcprice-corner br"></span>
+
+            <h3>Enterprise</h3>
+            <div class="hcprice-price">Custom</div>
+
+            <ul>
+                <li>♾ Unlimited Storage</li>
+                <li>🖥 Dedicated Servers</li>
+                <li>🤖 AI Analytics</li>
+                <li>🛡 Premium Security</li>
+                <li>👨‍💼 Dedicated Manager</li>
+            </ul>
+
+            <a href="./404.html">Contact Sales</a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+.hcprice-section{
+    padding:100px 5%;
+    background:#050505;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+.hcprice-header{
+    text-align:center;
+    max-width:900px;
+    margin:auto auto 70px;
+}
+
+.hcprice-header span{
+    color:#00ff88;
+    letter-spacing:4px;
+    font-weight:700;
+}
+
+.hcprice-header h2{
+    color:#fff;
+    font-size:52px;
+    margin:20px 0;
+}
+
+.hcprice-header p{
+    color:#cfcfcf;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.hcprice-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.hcprice-card{
+    position:relative;
+    padding:55px 35px;
+    background:linear-gradient(180deg,#06271d,#071d16);
+    min-height:580px;
+    transition:.45s ease;
+}
+
+/* HostCloud Corners */
+.hcprice-corner{
+    position:absolute;
+    width:32px;
+    height:32px;
+    border:3px solid #00ff88;
+}
+
+.hcprice-corner.tl{
+    top:15px;
+    left:15px;
+    border-right:none;
+    border-bottom:none;
+}
+.hcprice-corner.tr{
+    top:15px;
+    right:15px;
+    border-left:none;
+    border-bottom:none;
+}
+.hcprice-corner.bl{
+    bottom:15px;
+    left:15px;
+    border-right:none;
+    border-top:none;
+}
+.hcprice-corner.br{
+    bottom:15px;
+    right:15px;
+    border-left:none;
+    border-top:none;
+}
+
+.hcprice-card:hover{
+    transform:translateY(-15px) scale(1.03);
+    background:linear-gradient(180deg,#00ff88,#083124);
+    box-shadow:0 0 35px rgba(115,255,226,.22);
+}
+
+.hcprice-card h3{
+    color:white;
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.hcprice-price{
+    color:#73ffe2;
+    font-size:48px;
+    font-weight:bold;
+    margin-bottom:35px;
+}
+
+.hcprice-price span{
+    font-size:18px;
+    color:#ccc;
+}
+
+.hcprice-card ul{
+    list-style:none;
+    padding:0;
+    margin-bottom:40px;
+}
+
+.hcprice-card li{
+    color:#d6d6d6;
+    margin-bottom:18px;
+    font-size:16px;
+}
+
+.hcprice-card a{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    padding:16px;
+    background:#00ff88;
+    color:black;
+    font-weight:bold;
+}
+
+.hcprice-featured{
+    background:linear-gradient(180deg,#0a4a38,#073628);
+}
+
+.hcprice-badge{
+    position:absolute;
+    top:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#73ffe2;
+    color:black;
+    padding:8px 18px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* Scroll reveal */
+.hcprice-reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.hcprice-active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .hcprice-grid{
+        grid-template-columns:1fr;
+        max-width:600px;
+        margin:auto;
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .hcprice-section{
+        padding:70px 20px;
+    }
+
+    .hcprice-header h2{
+        font-size:30px;
+    }
+
+    .hcprice-card{
+        min-height:auto;
+        padding:45px 25px;
+    }
+
+    .hcprice-price{
+        font-size:36px;
+    }
+}
+</style>
+
+<script>
+(function(){
+    const cards=document.querySelectorAll('.hcprice-reveal');
+
+    const observer=new IntersectionObserver((entries)=>{
+        entries.forEach((entry,index)=>{
+            if(entry.isIntersecting){
+                setTimeout(()=>{
+                    entry.target.classList.add('hcprice-active');
+                }, index*250);
+            }
+        });
+    },{threshold:0.2});
+
+    cards.forEach(card=>observer.observe(card));
+})();
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="rstfooter-section">
+
+    <div class="rstfooter-container">
+
+        <!-- Column 1 -->
+        <div class="rstfooter-col rstfooter-first-col">
+            <a href="index.html" class="rstfooter-logo">
+                <img src="./white.webp" alt="Stackly Logo"
+                style="height:60px; filter: brightness(0) saturate(100%) invert(73%) sepia(94%) saturate(2874%) hue-rotate(92deg) brightness(103%) contrast(105%);">
+            </a>
+
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, rerum!
+            </p>
+
+            <div class="rstfooter-social">
+                <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="./404.html"><i class="fab fa-x-twitter"></i></a>
+                <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                <a href="./404.html"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="rstfooter-col">
+            <h3>Working Hours</h3>
+
+            <ul class="rstfooter-hours">
+                <li><span>Mon - Fri</span><span>09:00 - 22:00</span></li>
+                <li><span>Saturday</span><span>11:00 - 00:00</span></li>
+                <li><span>Sunday</span><span>11:00 - 23:00</span></li>
+                <li><span>Happy Hour</span><span>17:00 - 21:00</span></li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="rstfooter-col">
+            <h3>Contact Us</h3>
+
+            <p><i class="fas fa-map-marker-alt"></i> Salem Tamil Nadu</p>
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+            <p><i class="fas fa-envelope"></i> booking@thestackly.com</p>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="rstfooter-col">
+            <h3>Newsletter</h3>
+            <p>Receive latest updates from us.</p>
+
+            <form id="rstfooterForm">
+                <input type="email" id="rstfooterEmail" placeholder="Enter Email">
+                <button type="submit">Subscribe</button>
+            </form>
+
+            <small id="rstfooterMsg"></small>
+        </div>
+
+    </div>
+
+    <div class="rstfooter-bottom">
+        © 2026 Stackly services. All Rights Reserved.
+    </div>
+
+</footer>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.rstfooter-section{
+    background:#111;
+    color:white;
+    padding:70px 20px;
+}
+
+.rstfooter-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
+    align-items:start;
+}
+
+.rstfooter-col{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+.rstfooter-col h3{
+    margin-bottom:25px;
+    color:#00ff88;
+    min-height:40px; /* makes all headings align */
+    display:flex;
+    align-items:center;
+}
+
+.rstfooter-col p{
+    color:#bbb;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.rstfooter-logo img{
+    width:160px;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+.rstfooter-social{
+    display:flex;
+    gap:15px;
+    margin-top:10px;
+}
+
+.rstfooter-social a{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#222;
+    color:white;
+    text-decoration:none;
+    transition:.4s;
+}
+
+.rstfooter-social a:hover{
+    background:#00ff88;
+    color:black;
+}
+
+.rstfooter-hours{
+    list-style:none;
+    padding:0;
+}
+
+.rstfooter-hours li{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    color:#bbb;
+    gap:20px;
+}
+
+#rstfooterForm{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+#rstfooterForm input{
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+#rstfooterForm button{
+    padding:14px;
+    border:none;
+    background:#123e29;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+#rstfooterMsg{
+    display:block;
+    margin-top:10px;
+    color:#00ff88;
+}
+
+.rstfooter-bottom{
+    text-align:center;
+    border-top:1px solid #333;
+    margin-top:50px;
+    padding-top:20px;
+    color:#999;
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .rstfooter-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .rstfooter-container{
+        grid-template-columns:1fr;
+    }
+
+    .rstfooter-hours li{
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .rstfooter-col h3{
+        min-height:auto;
+    }
+}
+</style>
+
+<script>
+document.getElementById("rstfooterForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("rstfooterEmail").value.trim();
+    const msg = document.getElementById("rstfooterMsg");
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(emailPattern.test(email)){
+        msg.style.color = "#4CAF50";
+        msg.innerText = "Email verified ✓";
+
+        setTimeout(()=>{
+            window.location.href = "404.html";
+        },1500);
+    } else {
+        msg.style.color = "#ff7b7b";
+        msg.innerText = "Fill details correctly";
+    }
+});
+</script>
+
+
+</body>
+</html>
