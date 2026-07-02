@@ -588,10 +588,10 @@ body{
     </div>
 
     <ul class="sidebar-menu">
-        <li><a href="./client.html" class="active" ><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="./client.html"  ><i class="fas fa-chart-line"></i> Dashboard</a></li>
         <li><a href="./server-dash.html"><i class="fas fa-server"></i> My Services</a></li>
         <li><a href="./storage.html"><i class="fas fa-database"></i> Storage</a></li>
-        <li><a href="./activelog.html"><i class="fas fa-headset"></i> Active logs</a></li>
+        <li><a href="./activelog.html" class="active"><i class="fas fa-headset"></i> Active logs</a></li>
         <li><a href="./billing.html"><i class="fas fa-headset"></i> Billing & invoices  </a></li>
         <li><a href="./usage.html"><i class="fas fa-headset"></i> Usage reports</a></li>
         <li><a href="./index.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -624,176 +624,298 @@ body{
         </div>
     </div>
 
-    <section class="client-hero">
-        <div class="hero-content">
-            <h2>Welcome Back to Stackly Cloud ☁</h2>
-            <p>
-                Manage your cloud infrastructure, monitor usage,
-                deploy workloads, and scale instantly.
-            </p>
-            <button onclick="window.location.href='./404.html'">
-                Explore Services
-            </button>
+
+    <div class="logs-dashboard">
+
+        <div class="logs-header">
+            <h1>Active Logs</h1>
+            <p>Monitor your recent cloud activities and security events</p>
         </div>
-    </section>
-
-    <section class="service-section">
-        <h2>Active Services</h2>
-
-        <div class="service-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-server"></i></div>
-                <h3>Compute</h3>
-                <p>24 Running Instances</p>
+    
+        <div class="logs-cards">
+            <div class="logs-card">
+                <h3>Total Activities</h3>
+                <h2>1,245</h2>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-database"></i></div>
-                <h3>Storage</h3>
-                <p>12 TB Used</p>
+    
+            <div class="logs-card">
+                <h3>Uploads Today</h3>
+                <h2>58</h2>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Security</h3>
-                <p>Protected</p>
+    
+            <div class="logs-card">
+                <h3>Downloads</h3>
+                <h2>112</h2>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-network-wired"></i></div>
-                <h3>Network</h3>
-                <p>Stable</p>
+    
+            <div class="logs-card">
+                <h3>Security Alerts</h3>
+                <h2>2</h2>
             </div>
         </div>
-    </section>
-
-    <section class="usage-box">
-        <div>
-            <h2>Current Usage</h2>
-            <p>72% of compute resources utilized this month</p>
+    
+        <div class="logs-actions">
+            <button onclick="window.location.href='./404.html'">Search Logs</button>
+            <button onclick="window.location.href='./404.html'">Export Logs</button>
         </div>
-        <button onclick="window.location.href='./404.html'">
-            Upgrade Plan
-        </button>
-        
-    </section>
-
-    <section class="client-grid">
-        <div class="glass-box">
-            <h3>Recent Deployments</h3>
-            <ul>
-                <li>🚀 API Cluster v2.4 — Success</li>
-                <li>🚀 Database Patch — Completed</li>
-                <li>⚡ CDN Refresh — Running</li>
-            </ul>
-        </div>
-
-        <div class="glass-box">
-            <h3>Support Ticket</h3>
-            <p><strong>ID:</strong> #CLD2031</p>
-            <p><strong>Status:</strong> In Progress</p>
-            <p><strong>Priority:</strong> High</p>
-        </div>
-    </section>
-
-    <section class="review-section">
-        <h2>Client Reviews</h2>
-
-        <div class="review-grid">
-            <div class="review-card">
-                <p>"Excellent uptime and fast support."</p>
-                <h4>- Microsoft Team</h4>
+    
+        <div class="logs-table-box">
+            <h3>Recent Activities</h3>
+    
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Activity</th>
+                            <th>Device</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+                        <tr>
+                            <td>07 Jul 2026 10:15 AM</td>
+                            <td>Logged In</td>
+                            <td>Windows Laptop</td>
+                            <td class="success">Success</td>
+                        </tr>
+    
+                        <tr>
+                            <td>07 Jul 2026 10:40 AM</td>
+                            <td>File Uploaded</td>
+                            <td>Desktop</td>
+                            <td class="success">Completed</td>
+                        </tr>
+    
+                        <tr>
+                            <td>07 Jul 2026 11:20 AM</td>
+                            <td>Backup Download</td>
+                            <td>Mobile</td>
+                            <td class="success">Completed</td>
+                        </tr>
+    
+                        <tr>
+                            <td>07 Jul 2026 12:05 PM</td>
+                            <td>Unknown Login Attempt</td>
+                            <td>Unknown Device</td>
+                            <td class="warning">Blocked</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
-            <div class="review-card">
-                <p>"Easy scaling and reliable cloud services."</p>
-                <h4>- Netflix Infra</h4>
-            </div>
-
-            <div class="review-card">
-                <p>"Best enterprise cloud dashboard."</p>
-                <h4>- Startup Labs</h4>
-            </div>
         </div>
-    </section>
+    
+    </div>
 
-</div>
 
-<script>
-const adminName = localStorage.getItem("userName");
-const adminEmail = localStorage.getItem("userEmail");
-
-document.getElementById("adminName").innerText =
-    adminName ? adminName : "Client User";
-
-document.getElementById("adminEmail").innerText =
-    adminEmail ? adminEmail : "client@stackly.com";
-
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
-const closeSidebarBtn = document.getElementById("closeSidebarBtn");
-const menuBtn = document.getElementById("menuBtn");
-
-closeSidebarBtn.addEventListener("click", function () {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-});
-
-overlay.addEventListener("click", function () {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-});
-
-menuBtn.addEventListener("click", function () {
-    sidebar.classList.add("active");
-    overlay.classList.add("active");
-});
-
-function logout(){
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("loggedUser");
-    sessionStorage.removeItem("loggedUser");
+    <Style>
+        .logs-dashboard{
+    min-height:100vh;
+    background:#000;
+    color:white;
+    padding:25px;
 }
 
-const cards = document.querySelectorAll(
-'.service-card,.review-card,.glass-box,.client-hero'
-);
+.logs-header{
+    margin-bottom:25px;
+}
 
-cards.forEach((card,index)=>{
-    card.style.opacity="0";
-    card.style.transform="translateY(40px)";
+.logs-header h1{
+    color:#22c55e;
+    margin-bottom:8px;
+}
 
-    setTimeout(()=>{
-        card.style.transition="all .8s ease";
-        card.style.opacity="1";
-        card.style.transform="translateY(0)";
-    }, index*150);
-});
+.logs-header p{
+    color:#cbd5e1;
+}
 
-const currentPage = window.location.pathname.split("/").pop();
+.logs-cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:25px;
+}
 
-document.querySelectorAll(".sidebar-menu a").forEach(link => {
-    const href = link.getAttribute("href").replace("./","");
+.logs-card,
+.logs-table-box{
+    background:linear-gradient(145deg,#000,#123d20);
+    border:1px solid rgba(34,197,94,.25);
+    border-radius:20px;
+    padding:22px;
+}
 
-    link.classList.remove("active");
+.logs-card h3{
+    color:#cbd5e1;
+    margin-bottom:12px;
+}
 
-    if(href === currentPage){
-        link.classList.add("active");
+.logs-card h2{
+    color:#22c55e;
+}
+
+.logs-actions{
+    display:flex;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.logs-actions button{
+    padding:14px 24px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.logs-table-box h3{
+    color:#22c55e;
+    margin-bottom:20px;
+}
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:14px;
+    text-align:left;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+th{
+    color:#22c55e;
+}
+
+.success{
+    color:#22c55e;
+    font-weight:600;
+}
+
+.warning{
+    color:#facc15;
+    font-weight:600;
+}/* Tablet */
+@media (max-width:992px){
+    .logs-cards{
+        grid-template-columns:repeat(2,1fr);
     }
-});
 
-window.onload = function(){
-    const name = localStorage.getItem("userName");
-    const email = localStorage.getItem("userEmail");
+    .logs-actions{
+        flex-direction:column;
+    }
+}
 
-    document.getElementById("displayName").innerText =
-        name || "Guest User";
+/* Mobile */
+@media (max-width:576px){
+    .logs-dashboard{
+        padding:15px;
+    }
 
-    document.getElementById("displayEmail").innerText =
-        email || "No Email";
-};
-</script>
+    .logs-cards{
+        grid-template-columns:1fr;
+    }
 
-</body>
-</html>
+    .logs-card,
+    .logs-table-box{
+        padding:16px;
+        border-radius:16px;
+    }
+
+    .logs-actions button{
+        width:100%;
+    }
+
+    th,td{
+        font-size:13px;
+        padding:10px;
+    }
+}
+    </Style>
+
+
+    <script>
+        const adminName = localStorage.getItem("userName");
+        const adminEmail = localStorage.getItem("userEmail");
+        
+        document.getElementById("adminName").innerText =
+            adminName ? adminName : "Client User";
+        
+        document.getElementById("adminEmail").innerText =
+            adminEmail ? adminEmail : "client@stackly.com";
+        
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+        const menuBtn = document.getElementById("menuBtn");
+        
+        closeSidebarBtn.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+        
+        overlay.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+        
+        menuBtn.addEventListener("click", function () {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+        
+        function logout(){
+            localStorage.removeItem("userName");
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("loggedUser");
+            sessionStorage.removeItem("loggedUser");
+        }
+        
+        const cards = document.querySelectorAll(
+        '.service-card,.review-card,.glass-box,.client-hero'
+        );
+        
+        cards.forEach((card,index)=>{
+            card.style.opacity="0";
+            card.style.transform="translateY(40px)";
+        
+            setTimeout(()=>{
+                card.style.transition="all .8s ease";
+                card.style.opacity="1";
+                card.style.transform="translateY(0)";
+            }, index*150);
+        });
+        
+        const currentPage = window.location.pathname.split("/").pop();
+        
+        document.querySelectorAll(".sidebar-menu a").forEach(link => {
+            const href = link.getAttribute("href").replace("./","");
+        
+            link.classList.remove("active");
+        
+            if(href === currentPage){
+                link.classList.add("active");
+            }
+        });
+        
+        window.onload = function(){
+            const name = localStorage.getItem("userName");
+            const email = localStorage.getItem("userEmail");
+        
+            document.getElementById("displayName").innerText =
+                name || "Guest User";
+        
+            document.getElementById("displayEmail").innerText =
+                email || "No Email";
+        };
+        </script>
+        
+        </body>
+        </html>

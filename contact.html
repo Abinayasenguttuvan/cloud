@@ -518,19 +518,144 @@ input,select,textarea{
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-        <span class="hero-badge">Get in Touch</span>
-        <h1 class="hero-title">Contact Cloud Services</h1>
-        <p class="hero-tagline">
-            Reach our cloud experts for hosting, migration & support
-        </p>
-    </div>
-</section>
+    <section class="abthero-section">
+        <div class="abthero-overlay"></div>
+    
+        <div class="abthero-content">
+            <h1>Contact us</h1>
+    
+            <div class="abthero-breadcrumb">
+                <!-- <a href="./index.html">Home</a> -->
+                <!-- <span>→</span> -->
+                <!-- <p>About Us</p> -->
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, esse.</p>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        .abthero-section{
+        position:relative;
+        width:100%;
+        height:500px;
+        background:url("./cloud\ 1.webp") center center/cover no-repeat;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+    }
+    
+    .abthero-overlay{
+        position:absolute;
+        inset:0;
+        background:linear-gradient(
+            rgba(0,0,0,.65),
+            rgba(0,20,10,.72)
+        );
+    }
+    
+    .abthero-content{
+        position:relative;
+        z-index:2;
+        text-align:center;
+        padding:0 20px;
+        animation:abtheroFade 1s ease;
+    }
+    
+    @keyframes abtheroFade{
+        from{
+            opacity:0;
+            transform:translateY(50px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+    
+    .abthero-content h1{
+        color:#fff;
+        font-size:72px;
+        font-weight:800;
+        margin-bottom:20px;
+        text-shadow:0 0 25px rgba(0,255,136,.25);
+    }
+    
+    .abthero-breadcrumb{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:14px;
+        flex-wrap:wrap;
+    }
+    
+    .abthero-breadcrumb a{
+        color:#00ff88;
+        text-decoration:none;
+        font-size:20px;
+        font-weight:700;
+        transition:.3s;
+    }
+    
+    .abthero-breadcrumb a:hover{
+        text-shadow:0 0 12px #00ff88;
+    }
+    
+    .abthero-breadcrumb span{
+        color:#fff;
+        font-size:18px;
+    }
+    
+    .abthero-breadcrumb p{
+        color:#d5d5d5;
+        font-size:20px;
+        margin:0;
+    }
+    
+    /* Laptop */
+    @media(max-width:1200px){
+        .abthero-content h1{
+            font-size:58px;
+        }
+    }
+    
+    /* Tablet */
+    @media(max-width:992px){
+        .abthero-section{
+            height:420px;
+        }
+    
+        .abthero-content h1{
+            font-size:48px;
+        }
+    }
+    
+    /* Mobile */
+    @media(max-width:768px){
+        .abthero-section{
+            height:320px;
+        }
+    
+        .abthero-content h1{
+            font-size:34px;
+        }
+    
+        .abthero-breadcrumb a,
+        .abthero-breadcrumb p{
+            font-size:16px;
+        }
+    }
+    
+    /* Small Mobile */
+    @media(max-width:480px){
+        .abthero-content h1{
+            font-size:28px;
+        }
+    }
+    </style>
+    
+    
 
 <!-- CONTACT -->
 <section class="contact-section">

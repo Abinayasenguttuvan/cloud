@@ -588,11 +588,11 @@ body{
     </div>
 
     <ul class="sidebar-menu">
-        <li><a href="./client.html" class="active" ><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="./client.html"  ><i class="fas fa-chart-line"></i> Dashboard</a></li>
         <li><a href="./server-dash.html"><i class="fas fa-server"></i> My Services</a></li>
         <li><a href="./storage.html"><i class="fas fa-database"></i> Storage</a></li>
         <li><a href="./activelog.html"><i class="fas fa-headset"></i> Active logs</a></li>
-        <li><a href="./billing.html"><i class="fas fa-headset"></i> Billing & invoices  </a></li>
+        <li><a href="./billing.html" class="active" ><i class="fas fa-headset"></i> Billing & invoices  </a></li>
         <li><a href="./usage.html"><i class="fas fa-headset"></i> Usage reports</a></li>
         <li><a href="./index.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
     </ul>
@@ -624,176 +624,339 @@ body{
         </div>
     </div>
 
-    <section class="client-hero">
-        <div class="hero-content">
-            <h2>Welcome Back to Stackly Cloud ☁</h2>
-            <p>
-                Manage your cloud infrastructure, monitor usage,
-                deploy workloads, and scale instantly.
-            </p>
-            <button onclick="window.location.href='./404.html'">
-                Explore Services
-            </button>
+    <div class="billing-dashboard">
+
+        <div class="billing-header">
+            <h1>Billing Dashboard</h1>
+            <p>Manage subscriptions, invoices and payments</p>
         </div>
-    </section>
-
-    <section class="service-section">
-        <h2>Active Services</h2>
-
-        <div class="service-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-server"></i></div>
-                <h3>Compute</h3>
-                <p>24 Running Instances</p>
+    
+        <div class="billing-cards">
+            <div class="billing-card">
+                <h3>Current Plan</h3>
+                <h2>Premium Cloud</h2>
+                <p>$99 / month</p>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-database"></i></div>
-                <h3>Storage</h3>
-                <p>12 TB Used</p>
+    
+            <div class="billing-card">
+                <h3>Storage Used</h3>
+                <h2>750 GB</h2>
+                <p>Out of 1 TB</p>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Security</h3>
-                <p>Protected</p>
+    
+            <div class="billing-card">
+                <h3>Next Payment</h3>
+                <h2>15 Aug 2026</h2>
+                <p>$99 Auto Debit</p>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-network-wired"></i></div>
-                <h3>Network</h3>
-                <p>Stable</p>
+    
+            <div class="billing-card">
+                <h3>Outstanding</h3>
+                <h2>$20</h2>
+                <p>Pending Charges</p>
             </div>
         </div>
-    </section>
-
-    <section class="usage-box">
-        <div>
-            <h2>Current Usage</h2>
-            <p>72% of compute resources utilized this month</p>
-        </div>
-        <button onclick="window.location.href='./404.html'">
-            Upgrade Plan
-        </button>
-        
-    </section>
-
-    <section class="client-grid">
-        <div class="glass-box">
-            <h3>Recent Deployments</h3>
-            <ul>
-                <li>🚀 API Cluster v2.4 — Success</li>
-                <li>🚀 Database Patch — Completed</li>
-                <li>⚡ CDN Refresh — Running</li>
-            </ul>
-        </div>
-
-        <div class="glass-box">
-            <h3>Support Ticket</h3>
-            <p><strong>ID:</strong> #CLD2031</p>
-            <p><strong>Status:</strong> In Progress</p>
-            <p><strong>Priority:</strong> High</p>
-        </div>
-    </section>
-
-    <section class="review-section">
-        <h2>Client Reviews</h2>
-
-        <div class="review-grid">
-            <div class="review-card">
-                <p>"Excellent uptime and fast support."</p>
-                <h4>- Microsoft Team</h4>
+    
+        <div class="billing-grid">
+    
+            <div class="billing-panel">
+                <h3>Payment Method</h3>
+                <p>Visa ending in **** 4589</p>
+                <button onclick="window.location.href='./404.html'">
+                    Update Payment
+                </button>
             </div>
-
-            <div class="review-card">
-                <p>"Easy scaling and reliable cloud services."</p>
-                <h4>- Netflix Infra</h4>
+    
+            <div class="billing-panel">
+                <h3>Subscription</h3>
+                <p>Premium Cloud Plan</p>
+                <button onclick="window.location.href='./404.html'">
+                    Upgrade Plan
+                </button>
             </div>
-
-            <div class="review-card">
-                <p>"Best enterprise cloud dashboard."</p>
-                <h4>- Startup Labs</h4>
+    
+            <div class="billing-panel">
+                <h3>Invoices</h3>
+                <p>Download your billing history</p>
+                <button onclick="window.location.href='./404.html'">
+                    View Invoices
+                </button>
+            </div>
+    
+        </div>
+    
+        <div class="transactions-section">
+            <h3>Recent Transactions</h3>
+    
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Invoice ID</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+                        <tr>
+                            <td>10 Jul 2026</td>
+                            <td>#INV1023</td>
+                            <td>$99</td>
+                            <td class="paid">Paid</td>
+                            <td>
+                                <button onclick="window.location.href='./404.html'">
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td>10 Jun 2026</td>
+                            <td>#INV1022</td>
+                            <td>$99</td>
+                            <td class="paid">Paid</td>
+                            <td>
+                                <button onclick="window.location.href='./404.html'">
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+    
+                        <tr>
+                            <td>10 May 2026</td>
+                            <td>#INV1021</td>
+                            <td>$79</td>
+                            <td class="pending">Pending</td>
+                            <td>
+                                <button onclick="window.location.href='./404.html'">
+                                    Download
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
+    
+    </div>
 
-</div>
 
-<script>
-const adminName = localStorage.getItem("userName");
-const adminEmail = localStorage.getItem("userEmail");
-
-document.getElementById("adminName").innerText =
-    adminName ? adminName : "Client User";
-
-document.getElementById("adminEmail").innerText =
-    adminEmail ? adminEmail : "client@stackly.com";
-
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
-const closeSidebarBtn = document.getElementById("closeSidebarBtn");
-const menuBtn = document.getElementById("menuBtn");
-
-closeSidebarBtn.addEventListener("click", function () {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-});
-
-overlay.addEventListener("click", function () {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-});
-
-menuBtn.addEventListener("click", function () {
-    sidebar.classList.add("active");
-    overlay.classList.add("active");
-});
-
-function logout(){
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("loggedUser");
-    sessionStorage.removeItem("loggedUser");
+    <style>
+        .billing-dashboard{
+    padding:25px;
+    min-height:100vh;
+    background:#000;
+    color:white;
 }
 
-const cards = document.querySelectorAll(
-'.service-card,.review-card,.glass-box,.client-hero'
-);
+.billing-header{
+    margin-bottom:25px;
+}
 
-cards.forEach((card,index)=>{
-    card.style.opacity="0";
-    card.style.transform="translateY(40px)";
+.billing-header h1{
+    color:#22c55e;
+    margin-bottom:8px;
+}
 
-    setTimeout(()=>{
-        card.style.transition="all .8s ease";
-        card.style.opacity="1";
-        card.style.transform="translateY(0)";
-    }, index*150);
-});
+.billing-header p{
+    color:#cbd5e1;
+}
 
-const currentPage = window.location.pathname.split("/").pop();
+.billing-cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:25px;
+}
 
-document.querySelectorAll(".sidebar-menu a").forEach(link => {
-    const href = link.getAttribute("href").replace("./","");
+.billing-card,
+.billing-panel,
+.transactions-section{
+    background:linear-gradient(145deg,#000,#123d20);
+    border:1px solid rgba(34,197,94,.25);
+    border-radius:20px;
+    padding:22px;
+}
 
-    link.classList.remove("active");
+.billing-card h3,
+.billing-panel h3,
+.transactions-section h3{
+    color:#22c55e;
+    margin-bottom:12px;
+}
 
-    if(href === currentPage){
-        link.classList.add("active");
+.billing-card p,
+.billing-panel p{
+    color:#cbd5e1;
+}
+
+.billing-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:25px;
+}
+
+button{
+    width:100%;
+    margin-top:15px;
+    padding:13px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:14px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    text-align:left;
+}
+
+th{
+    color:#22c55e;
+}
+
+.paid{
+    color:#22c55e;
+    font-weight:bold;
+}
+
+.pending{
+    color:#facc15;
+    font-weight:bold;
+}
+/* Tablet */
+@media (max-width:992px){
+    .billing-cards{
+        grid-template-columns:repeat(2,1fr);
     }
-});
 
-window.onload = function(){
-    const name = localStorage.getItem("userName");
-    const email = localStorage.getItem("userEmail");
+    .billing-grid{
+        grid-template-columns:1fr;
+    }
+}
 
-    document.getElementById("displayName").innerText =
-        name || "Guest User";
+/* Mobile */
+@media (max-width:576px){
+    .billing-dashboard{
+        padding:15px;
+    }
 
-    document.getElementById("displayEmail").innerText =
-        email || "No Email";
-};
-</script>
+    .billing-cards{
+        grid-template-columns:1fr;
+    }
 
-</body>
-</html>
+    .billing-card,
+    .billing-panel,
+    .transactions-section{
+        padding:16px;
+        border-radius:16px;
+    }
+
+    th,td{
+        font-size:13px;
+        padding:10px;
+    }
+
+    button{
+        font-size:14px;
+    }
+}
+    </style>
+
+
+
+
+    <script>
+        const adminName = localStorage.getItem("userName");
+        const adminEmail = localStorage.getItem("userEmail");
+        
+        document.getElementById("adminName").innerText =
+            adminName ? adminName : "Client User";
+        
+        document.getElementById("adminEmail").innerText =
+            adminEmail ? adminEmail : "client@stackly.com";
+        
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+        const menuBtn = document.getElementById("menuBtn");
+        
+        closeSidebarBtn.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+        
+        overlay.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+        
+        menuBtn.addEventListener("click", function () {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+        
+        function logout(){
+            localStorage.removeItem("userName");
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("loggedUser");
+            sessionStorage.removeItem("loggedUser");
+        }
+        
+        const cards = document.querySelectorAll(
+        '.service-card,.review-card,.glass-box,.client-hero'
+        );
+        
+        cards.forEach((card,index)=>{
+            card.style.opacity="0";
+            card.style.transform="translateY(40px)";
+        
+            setTimeout(()=>{
+                card.style.transition="all .8s ease";
+                card.style.opacity="1";
+                card.style.transform="translateY(0)";
+            }, index*150);
+        });
+        
+        const currentPage = window.location.pathname.split("/").pop();
+        
+        document.querySelectorAll(".sidebar-menu a").forEach(link => {
+            const href = link.getAttribute("href").replace("./","");
+        
+            link.classList.remove("active");
+        
+            if(href === currentPage){
+                link.classList.add("active");
+            }
+        });
+        
+        window.onload = function(){
+            const name = localStorage.getItem("userName");
+            const email = localStorage.getItem("userEmail");
+        
+            document.getElementById("displayName").innerText =
+                name || "Guest User";
+        
+            document.getElementById("displayEmail").innerText =
+                email || "No Email";
+        };
+        </script>
+        
+        </body>
+        </html>

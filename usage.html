@@ -588,12 +588,12 @@ body{
     </div>
 
     <ul class="sidebar-menu">
-        <li><a href="./client.html" class="active" ><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="./client.html" ><i class="fas fa-chart-line"></i> Dashboard</a></li>
         <li><a href="./server-dash.html"><i class="fas fa-server"></i> My Services</a></li>
         <li><a href="./storage.html"><i class="fas fa-database"></i> Storage</a></li>
         <li><a href="./activelog.html"><i class="fas fa-headset"></i> Active logs</a></li>
         <li><a href="./billing.html"><i class="fas fa-headset"></i> Billing & invoices  </a></li>
-        <li><a href="./usage.html"><i class="fas fa-headset"></i> Usage reports</a></li>
+        <li><a href="./usage.html" class="active"><i class="fas fa-headset"></i> Usage reports</a></li>
         <li><a href="./index.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
     </ul>
 </div>
@@ -624,176 +624,328 @@ body{
         </div>
     </div>
 
-    <section class="client-hero">
-        <div class="hero-content">
-            <h2>Welcome Back to Stackly Cloud ☁</h2>
-            <p>
-                Manage your cloud infrastructure, monitor usage,
-                deploy workloads, and scale instantly.
-            </p>
-            <button onclick="window.location.href='./404.html'">
-                Explore Services
-            </button>
-        </div>
-    </section>
 
-    <section class="service-section">
-        <h2>Active Services</h2>
-
-        <div class="service-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-server"></i></div>
-                <h3>Compute</h3>
-                <p>24 Running Instances</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-database"></i></div>
+    <section class="usage-dashboard">
+        <h2>Usage Dashboard</h2>
+        <p class="sub-title">Monitor your cloud resource consumption in real time</p>
+    
+        <!-- Usage Cards -->
+        <div class="usage-cards">
+            <div class="usage-card">
+                <i class="fas fa-database"></i>
                 <h3>Storage</h3>
-                <p>12 TB Used</p>
+                <p>750 GB / 1 TB</p>
+                <div class="progress">
+                    <div class="fill" style="width:75%"></div>
+                </div>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Security</h3>
-                <p>Protected</p>
+    
+            <div class="usage-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>Bandwidth</h3>
+                <p>4.2 TB / 5 TB</p>
+                <div class="progress">
+                    <div class="fill" style="width:84%"></div>
+                </div>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-network-wired"></i></div>
-                <h3>Network</h3>
-                <p>Stable</p>
+    
+            <div class="usage-card">
+                <i class="fas fa-microchip"></i>
+                <h3>CPU Usage</h3>
+                <p>68%</p>
+                <div class="progress">
+                    <div class="fill" style="width:68%"></div>
+                </div>
             </div>
+    
+            <div class="usage-card">
+                <i class="fas fa-memory"></i>
+                <h3>RAM Usage</h3>
+                <p>24 GB / 32 GB</p>
+                <div class="progress">
+                    <div class="fill" style="width:75%"></div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Monthly Usage -->
+        <div class="usage-chart-box">
+            <h3>Monthly Usage Trend</h3>
+            <div class="bars">
+                <div class="bar" style="height:40%">Jan</div>
+                <div class="bar" style="height:55%">Feb</div>
+                <div class="bar" style="height:65%">Mar</div>
+                <div class="bar" style="height:80%">Apr</div>
+                <div class="bar" style="height:70%">May</div>
+                <div class="bar" style="height:90%">Jun</div>
+            </div>
+        </div>
+    
+        <!-- Logs -->
+        <div class="usage-table">
+            <h3>Recent Usage Logs</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Service</th>
+                        <th>Usage</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01 Jul 2026</td>
+                        <td>Cloud Storage</td>
+                        <td>120 GB</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>30 Jun 2026</td>
+                        <td>Backup</td>
+                        <td>250 GB</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>29 Jun 2026</td>
+                        <td>Bandwidth</td>
+                        <td>600 GB</td>
+                        <td><span class="status warning">High</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <section class="usage-box">
-        <div>
-            <h2>Current Usage</h2>
-            <p>72% of compute resources utilized this month</p>
-        </div>
-        <button onclick="window.location.href='./404.html'">
-            Upgrade Plan
-        </button>
-        
-    </section>
 
-    <section class="client-grid">
-        <div class="glass-box">
-            <h3>Recent Deployments</h3>
-            <ul>
-                <li>🚀 API Cluster v2.4 — Success</li>
-                <li>🚀 Database Patch — Completed</li>
-                <li>⚡ CDN Refresh — Running</li>
-            </ul>
-        </div>
-
-        <div class="glass-box">
-            <h3>Support Ticket</h3>
-            <p><strong>ID:</strong> #CLD2031</p>
-            <p><strong>Status:</strong> In Progress</p>
-            <p><strong>Priority:</strong> High</p>
-        </div>
-    </section>
-
-    <section class="review-section">
-        <h2>Client Reviews</h2>
-
-        <div class="review-grid">
-            <div class="review-card">
-                <p>"Excellent uptime and fast support."</p>
-                <h4>- Microsoft Team</h4>
-            </div>
-
-            <div class="review-card">
-                <p>"Easy scaling and reliable cloud services."</p>
-                <h4>- Netflix Infra</h4>
-            </div>
-
-            <div class="review-card">
-                <p>"Best enterprise cloud dashboard."</p>
-                <h4>- Startup Labs</h4>
-            </div>
-        </div>
-    </section>
-
-</div>
-
-<script>
-const adminName = localStorage.getItem("userName");
-const adminEmail = localStorage.getItem("userEmail");
-
-document.getElementById("adminName").innerText =
-    adminName ? adminName : "Client User";
-
-document.getElementById("adminEmail").innerText =
-    adminEmail ? adminEmail : "client@stackly.com";
-
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
-const closeSidebarBtn = document.getElementById("closeSidebarBtn");
-const menuBtn = document.getElementById("menuBtn");
-
-closeSidebarBtn.addEventListener("click", function () {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-});
-
-overlay.addEventListener("click", function () {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-});
-
-menuBtn.addEventListener("click", function () {
-    sidebar.classList.add("active");
-    overlay.classList.add("active");
-});
-
-function logout(){
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("loggedUser");
-    sessionStorage.removeItem("loggedUser");
+    <style>
+        .usage-dashboard{
+    padding:25px;
+    color:white;
+    background:#07110a;
+    min-height:100vh;
 }
 
-const cards = document.querySelectorAll(
-'.service-card,.review-card,.glass-box,.client-hero'
-);
+.usage-dashboard h2{
+    color:#22c55e;
+    margin-bottom:8px;
+}
 
-cards.forEach((card,index)=>{
-    card.style.opacity="0";
-    card.style.transform="translateY(40px)";
+.sub-title{
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
 
-    setTimeout(()=>{
-        card.style.transition="all .8s ease";
-        card.style.opacity="1";
-        card.style.transform="translateY(0)";
-    }, index*150);
-});
+.usage-cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
 
-const currentPage = window.location.pathname.split("/").pop();
+.usage-card{
+    background:#111827;
+    padding:22px;
+    border-radius:18px;
+    border:1px solid rgba(34,197,94,0.25);
+}
 
-document.querySelectorAll(".sidebar-menu a").forEach(link => {
-    const href = link.getAttribute("href").replace("./","");
+.usage-card i{
+    font-size:30px;
+    color:#22c55e;
+    margin-bottom:15px;
+}
 
-    link.classList.remove("active");
+.usage-card h3{
+    margin-bottom:8px;
+}
 
-    if(href === currentPage){
-        link.classList.add("active");
+.progress{
+    height:8px;
+    background:#1f2937;
+    border-radius:10px;
+    margin-top:12px;
+}
+
+.fill{
+    height:100%;
+    background:#22c55e;
+    border-radius:10px;
+}
+
+.usage-chart-box{
+    background:#111827;
+    padding:25px;
+    border-radius:18px;
+    margin-bottom:30px;
+}
+
+.bars{
+    display:flex;
+    align-items:flex-end;
+    gap:20px;
+    height:250px;
+    margin-top:20px;
+}
+
+.bar{
+    flex:1;
+    background:#22c55e;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding-bottom:10px;
+    border-radius:12px 12px 0 0;
+    font-size:14px;
+    font-weight:600;
+}
+
+.usage-table{
+    background:#111827;
+    padding:20px;
+    border-radius:18px;
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:14px;
+    text-align:left;
+}
+
+th{
+    color:#22c55e;
+}
+
+tbody tr{
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.status{
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.active{
+    background:#14532d;
+    color:#86efac;
+}
+
+.warning{
+    background:#78350f;
+    color:#facc15;
+}
+
+/* Tablet */
+@media(max-width:992px){
+    .usage-cards{
+        grid-template-columns:repeat(2,1fr);
     }
-});
+}
 
-window.onload = function(){
-    const name = localStorage.getItem("userName");
-    const email = localStorage.getItem("userEmail");
+/* Mobile */
+@media(max-width:576px){
+    .usage-dashboard{
+        padding:15px;
+    }
 
-    document.getElementById("displayName").innerText =
-        name || "Guest User";
+    .usage-cards{
+        grid-template-columns:1fr;
+    }
 
-    document.getElementById("displayEmail").innerText =
-        email || "No Email";
-};
-</script>
+    .bars{
+        height:180px;
+        gap:10px;
+    }
 
-</body>
-</html>
+    th,td{
+        font-size:12px;
+        padding:10px;
+    }
+}
+    </style>
+
+    <script>
+        const adminName = localStorage.getItem("userName");
+        const adminEmail = localStorage.getItem("userEmail");
+        
+        document.getElementById("adminName").innerText =
+            adminName ? adminName : "Client User";
+        
+        document.getElementById("adminEmail").innerText =
+            adminEmail ? adminEmail : "client@stackly.com";
+        
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+        const menuBtn = document.getElementById("menuBtn");
+        
+        closeSidebarBtn.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+        
+        overlay.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+        
+        menuBtn.addEventListener("click", function () {
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+        
+        function logout(){
+            localStorage.removeItem("userName");
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("loggedUser");
+            sessionStorage.removeItem("loggedUser");
+        }
+        
+        const cards = document.querySelectorAll(
+        '.service-card,.review-card,.glass-box,.client-hero'
+        );
+        
+        cards.forEach((card,index)=>{
+            card.style.opacity="0";
+            card.style.transform="translateY(40px)";
+        
+            setTimeout(()=>{
+                card.style.transition="all .8s ease";
+                card.style.opacity="1";
+                card.style.transform="translateY(0)";
+            }, index*150);
+        });
+        
+        const currentPage = window.location.pathname.split("/").pop();
+        
+        document.querySelectorAll(".sidebar-menu a").forEach(link => {
+            const href = link.getAttribute("href").replace("./","");
+        
+            link.classList.remove("active");
+        
+            if(href === currentPage){
+                link.classList.add("active");
+            }
+        });
+        
+        window.onload = function(){
+            const name = localStorage.getItem("userName");
+            const email = localStorage.getItem("userEmail");
+        
+            document.getElementById("displayName").innerText =
+                name || "Guest User";
+        
+            document.getElementById("displayEmail").innerText =
+                email || "No Email";
+        };
+        </script>
+        
+        </body>
+        </html>
