@@ -334,12 +334,35 @@ select option{
         font-size:13px;
     }
 
+    @media (max-width:576px){
     .remember-forgot{
+        display:flex;
         flex-direction:row;
-        gap:10px;
-        align-items:flex-start;
+        justify-content:space-between;
+        align-items:center;
+        flex-wrap:nowrap;   /* prevent moving to next line */
+        gap:8px;
+        width:100%;
+        font-size:12px;
     }
 
+    .remember-forgot label{
+        display:flex;
+        align-items:center;
+        gap:4px;
+        white-space:nowrap;   /* keep Remember me in one line */
+        margin:0;
+    }
+
+    .remember-forgot a{
+        white-space:nowrap;   /* keep Forgot Password in one line */
+        font-size:12px;
+    }
+
+    .remember-forgot input[type="checkbox"]{
+        margin:0;
+    }
+}
     .social-login{
         flex-direction:column;
     }
