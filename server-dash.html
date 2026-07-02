@@ -21,7 +21,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 body{
     background:
     linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
-    url('./cloud-bg.webp') center/cover no-repeat;
+    url('./cloud 1.webp') center/cover no-repeat;
     min-height:100vh;
     color:#fff;
     display:flex;
@@ -384,7 +384,7 @@ body{
         }
 
         .admin-text{
-            display:none;
+            display:block;
         }
 
         .top-left h1{
@@ -395,6 +395,216 @@ body{
             padding:14px;
         }
     }
+
+    /* =========================
+   LARGE DESKTOP (1440px+)
+========================= */
+@media (min-width:1440px){
+    .main-content{
+        padding:35px;
+    }
+
+    .cards{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .top-left h1{
+        font-size:32px;
+    }
+
+    .card h2{
+        font-size:38px;
+    }
+}
+
+
+/* =========================
+   LAPTOP (1024px - 1439px)
+========================= */
+@media (max-width:1439px){
+    .sidebar{
+        width:260px;
+    }
+
+    .main-content{
+        margin-left:260px;
+        width:calc(100% - 260px);
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .chart-grid{
+        grid-template-columns:1fr;
+    }
+
+    .top-left h1{
+        font-size:24px;
+    }
+}
+
+
+/* =========================
+   TABLET (768px - 1023px)
+========================= */
+@media (max-width:1023px){
+    .sidebar{
+        left:-100%;
+    }
+
+    .sidebar.active{
+        left:0;
+    }
+
+    .main-content{
+        margin-left:0;
+        width:100%;
+        padding:20px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .close-sidebar-btn{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+        gap:16px;
+    }
+
+    .chart-grid{
+        grid-template-columns:1fr;
+    }
+
+    .topbar{
+        padding:16px 18px;
+    }
+
+    .top-left h1{
+        font-size:20px;
+    }
+}
+
+
+/* =========================
+   MOBILE (below 768px)
+========================= */
+@media (max-width:767px){
+
+    .main-content{
+        padding:14px;
+    }
+
+    .topbar{
+        padding:12px;
+        gap:10px;
+        flex-wrap:nowrap;
+    }
+
+    .top-left{
+        gap:8px;
+        min-width:0;
+    }
+
+    .top-left h1{
+        font-size:15px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .admin-info{
+        gap:8px;
+        max-width:160px;
+        min-width:0;
+    }
+
+    .admin-avatar{
+        width:40px;
+        height:40px;
+        font-size:15px;
+        flex-shrink:0;
+    }
+
+    .admin-text{
+        display:block;
+        min-width:0;
+        overflow:hidden;
+    }
+
+    .admin-text h4{
+        font-size:11px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .admin-text p{
+        font-size:9px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        max-width:100px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .card h2{
+        font-size:24px;
+    }
+
+    .chart-box,
+    .table-box{
+        padding:14px;
+    }
+
+    table{
+        min-width:500px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE (below 480px)
+========================= */
+@media (max-width:480px){
+
+    .top-left h1{
+        font-size:13px;
+    }
+
+    .admin-text p{
+        font-size:8px;
+        max-width:80px;
+    }
+
+    .card-icon{
+        width:50px;
+        height:50px;
+        font-size:20px;
+    }
+
+    .card h3{
+        font-size:15px;
+    }
+
+    .card h2{
+        font-size:22px;
+    }
+}
 </style>
 </head>
 <body>

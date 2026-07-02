@@ -9,6 +9,7 @@
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+    
 *{
     margin:0;
     padding:0;
@@ -322,19 +323,44 @@ body{
     line-height:1.6;
 }
 
-/* TABLET */
-@media(max-width:1100px){
+//* ================= DESKTOP LARGE ================= */
+@media (min-width:1400px){
+    .main-content{
+        padding:35px;
+    }
+
+    .service-grid,
+    .review-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .top-left h1{
+        font-size:30px;
+    }
+}
+
+/* ================= LAPTOP ================= */
+@media (max-width:1200px){
     .service-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
     .review-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .main-content{
+        padding:20px;
+    }
+
+    .hero-content h2{
+        font-size:32px;
     }
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* ================= TABLET ================= */
+@media (max-width:900px){
+
     .sidebar{
         left:-100%;
     }
@@ -346,6 +372,7 @@ body{
     .main-content{
         margin-left:0;
         width:100%;
+        padding:18px;
     }
 
     .menu-btn{
@@ -358,12 +385,22 @@ body{
         align-items:center;
     }
 
+    .topbar{
+        padding:16px;
+    }
+
     .top-left h1{
         font-size:20px;
     }
-}
 
-@media(max-width:768px){
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .review-grid{
+        grid-template-columns:1fr;
+    }
+
     .client-grid{
         grid-template-columns:1fr;
     }
@@ -379,21 +416,97 @@ body{
     }
 }
 
-@media(max-width:600px){
+/* ================= MOBILE ================= */
+@media (max-width:600px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    .main-content{
+        padding:12px;
+    }
+
+    .topbar{
+        padding:12px;
+        gap:10px;
+    }
+
+    .top-left{
+        gap:10px;
+    }
+
+    .top-left h1{
+        font-size:15px;
+        gap:8px;
+    }
+
+    .admin-info{
+        gap:8px;
+        max-width:150px;
+    }
+
+    .admin-avatar{
+        width:38px;
+        height:38px;
+        flex-shrink:0;
+    }
+
+    .admin-text{
+        display:block;
+        min-width:0;
+    }
+
+    .admin-text h4{
+        font-size:11px;
+        margin-bottom:2px;
+    }
+
+    .admin-text p{
+        font-size:9px;
+        max-width:90px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        display:block;
+    }
+
     .service-grid{
         grid-template-columns:1fr;
     }
 
-    .admin-text{
-        display:none;
+    .review-grid{
+        grid-template-columns:1fr;
+    }
+
+    .client-grid{
+        grid-template-columns:1fr;
     }
 
     .client-hero{
-        padding:30px 20px;
+        padding:24px 16px;
     }
 
     .hero-content h2{
-        font-size:24px;
+        font-size:22px;
+    }
+
+    .hero-content p{
+        font-size:14px;
+    }
+
+    .usage-box{
+        padding:20px 15px;
+    }
+
+    .service-card,
+    .review-card,
+    .glass-box{
+        padding:18px 14px;
+    }
+
+    .sidebar{
+        width:260px;
     }
 }
 </style>

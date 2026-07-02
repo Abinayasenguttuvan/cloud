@@ -322,19 +322,54 @@ body{
     line-height:1.6;
 }
 
-/* TABLET */
-@media(max-width:1100px){
+/* =========================
+   LARGE DESKTOP (1400px+)
+========================= */
+@media screen and (min-width:1400px){
+    .main-content{
+        padding:35px;
+    }
+
     .service-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:repeat(4,1fr);
     }
 
     .review-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .hero-content h2{
+        font-size:42px;
     }
 }
 
-/* MOBILE */
-@media(max-width:900px){
+
+/* =========================
+   LAPTOP (1024px–1399px)
+========================= */
+@media screen and (max-width:1399px){
+    .service-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .review-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .main-content{
+        padding:22px;
+    }
+
+    .hero-content h2{
+        font-size:34px;
+    }
+}
+
+
+/* =========================
+   TABLET (768px–1023px)
+========================= */
+@media screen and (max-width:1023px){
     .sidebar{
         left:-100%;
     }
@@ -346,6 +381,7 @@ body{
     .main-content{
         margin-left:0;
         width:100%;
+        padding:20px;
     }
 
     .menu-btn{
@@ -358,42 +394,156 @@ body{
         align-items:center;
     }
 
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .review-grid{
+        grid-template-columns:1fr;
+    }
+
+    .client-grid{
+        grid-template-columns:1fr;
+    }
+
     .top-left h1{
-        font-size:20px;
+        font-size:22px;
+    }
+
+    .hero-content h2{
+        font-size:30px;
     }
 }
 
-@media(max-width:768px){
+
+/* =========================
+   MOBILE (below 768px)
+========================= */
+@media screen and (max-width:767px){
+
+    .main-content{
+        padding:14px;
+    }
+
+    .topbar{
+        padding:14px 12px;
+        gap:10px;
+    }
+
+    .top-left{
+        gap:10px;
+        min-width:0;
+    }
+
+    .top-left h1{
+        font-size:16px;
+        gap:8px;
+    }
+
+    .admin-info{
+        gap:8px;
+        max-width:150px;
+        min-width:0;
+    }
+
+    .admin-avatar{
+        width:38px;
+        height:38px;
+        flex-shrink:0;
+    }
+
+    .admin-text{
+        display:block;
+        min-width:0;
+    }
+
+    .admin-text h4{
+        font-size:11px;
+        margin-bottom:2px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .admin-text p{
+        font-size:9px;
+        display:block;
+        max-width:90px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .review-grid{
+        grid-template-columns:1fr;
+    }
+
     .client-grid{
         grid-template-columns:1fr;
     }
 
     .usage-box{
         flex-direction:column;
-        gap:20px;
         text-align:center;
-    }
-
-    .hero-content h2{
-        font-size:28px;
-    }
-}
-
-@media(max-width:600px){
-    .service-grid{
-        grid-template-columns:1fr;
-    }
-
-    .admin-text{
-        display:none;
+        gap:20px;
     }
 
     .client-hero{
-        padding:30px 20px;
+        padding:28px 18px;
     }
 
     .hero-content h2{
-        font-size:24px;
+        font-size:22px;
+    }
+
+    .hero-content p{
+        font-size:14px;
+    }
+
+    .service-card,
+    .glass-box,
+    .review-card{
+        padding:20px 15px;
+    }
+
+    .usage-box{
+        padding:20px 15px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE (below 480px)
+========================= */
+@media screen and (max-width:480px){
+
+    .top-left h1{
+        font-size:14px;
+    }
+
+    .admin-info{
+        max-width:120px;
+    }
+
+    .admin-text h4{
+        font-size:10px;
+    }
+
+    .admin-text p{
+        font-size:8px;
+        max-width:70px;
+    }
+
+    .hero-content h2{
+        font-size:20px;
+    }
+
+    .hero-content p{
+        font-size:13px;
     }
 }
 </style>

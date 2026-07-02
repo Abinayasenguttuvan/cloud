@@ -321,20 +321,50 @@ body{
     margin-bottom:15px;
     line-height:1.6;
 }
+/* ================= LARGE DESKTOP ================= */
+/* 1440px and above */
+@media (min-width:1440px){
+    .main-content{
+        padding:35px;
+    }
 
-/* TABLET */
-@media(max-width:1100px){
+    .top-left h1{
+        font-size:32px;
+    }
+
+    .hero-content h2{
+        font-size:42px;
+    }
+
     .service-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:repeat(4,1fr);
     }
 
     .review-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(3,1fr);
     }
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* ================= LAPTOP ================= */
+/* 1024px - 1439px */
+@media (max-width:1439px){
+    .service-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .review-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero-content h2{
+        font-size:34px;
+    }
+}
+
+/* ================= TABLET ================= */
+/* 768px - 1023px */
+@media (max-width:1024px){
+
     .sidebar{
         left:-100%;
     }
@@ -346,6 +376,7 @@ body{
     .main-content{
         margin-left:0;
         width:100%;
+        padding:20px;
     }
 
     .menu-btn{
@@ -358,13 +389,27 @@ body{
         align-items:center;
     }
 
-    .top-left h1{
-        font-size:20px;
+    .topbar{
+        padding:18px 20px;
     }
-}
 
-@media(max-width:768px){
+    .top-left h1{
+        font-size:22px;
+    }
+
+    .hero-content h2{
+        font-size:30px;
+    }
+
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
     .client-grid{
+        grid-template-columns:1fr;
+    }
+
+    .review-grid{
         grid-template-columns:1fr;
     }
 
@@ -373,28 +418,159 @@ body{
         gap:20px;
         text-align:center;
     }
-
-    .hero-content h2{
-        font-size:28px;
-    }
 }
 
-@media(max-width:600px){
-    .service-grid{
-        grid-template-columns:1fr;
+/* ================= MOBILE ================= */
+/* 480px - 767px */
+@media (max-width:767px){
+
+    body{
+        font-size:14px;
+    }
+
+    .main-content{
+        padding:14px;
+    }
+
+    .topbar{
+        padding:14px 16px;
+        border-radius:14px;
+    }
+
+    .top-left{
+        gap:12px;
+    }
+
+    .top-left h1{
+        font-size:18px;
+        gap:8px;
+    }
+
+    .admin-info{
+        gap:8px;
+        max-width:150px;
+    }
+
+    .admin-avatar{
+        width:42px;
+        height:42px;
+        flex-shrink:0;
     }
 
     .admin-text{
-        display:none;
+        display:block;
+        min-width:0;
+    }
+
+    .admin-text h4{
+        font-size:12px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .admin-text p{
+        font-size:10px;
+        max-width:90px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
     }
 
     .client-hero{
-        padding:30px 20px;
+        padding:24px 18px;
     }
 
     .hero-content h2{
         font-size:24px;
+        line-height:1.4;
     }
+
+    .hero-content p{
+        font-size:14px;
+    }
+
+    .hero-content button{
+        width:100%;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .service-card{
+        padding:20px 14px;
+    }
+
+    .service-icon{
+        width:60px;
+        height:60px;
+        font-size:24px;
+    }
+
+    .glass-box{
+        padding:18px;
+    }
+
+    .usage-box{
+        padding:22px;
+    }
+
+    .review-grid{
+        grid-template-columns:1fr;
+    }
+
+    .review-card{
+        padding:18px;
+    }
+}
+
+/* ================= SMALL MOBILE ================= */
+/* 320px - 479px */
+@media (max-width:480px){
+
+    .top-left h1{
+        font-size:16px;
+    }
+
+    .admin-text p{
+        max-width:70px;
+        font-size:9px;
+    }
+
+    .hero-content h2{
+        font-size:20px;
+    }
+
+    .hero-content p{
+        font-size:13px;
+    }
+
+    .usage-box h2{
+        font-size:20px;
+    }
+
+    .usage-box p{
+        font-size:13px;
+    }
+
+    .usage-box button{
+        width:100%;
+    }
+
+    .sidebar{
+        width:260px;
+    }
+}
+.sidebar-menu a.active{
+    background:linear-gradient(135deg,#00c853,#00ff99);
+    color:#000;
+    transform:translateX(4px);
+}
+
+.sidebar-menu a:hover:not(.active){
+    background:rgba(0,255,153,.15);
 }
 </style>
 </head>
@@ -412,7 +588,7 @@ body{
     </div>
 
     <ul class="sidebar-menu">
-        <li><a href="./client.html" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="./client.html" ><i class="fas fa-chart-line"></i> Dashboard</a></li>
         <li><a href="./services-dash.html"><i class="fas fa-server"></i> My Services</a></li>
         <li><a href="./storage.html"><i class="fas fa-database"></i> Storage</a></li>
         <li><a href="./404.html"><i class="fas fa-headset"></i> Active logs</a></li>
@@ -594,6 +770,18 @@ cards.forEach((card,index)=>{
         card.style.opacity="1";
         card.style.transform="translateY(0)";
     }, index*150);
+});
+
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll(".sidebar-menu a").forEach(link => {
+    const href = link.getAttribute("href").replace("./","");
+
+    link.classList.remove("active");
+
+    if(href === currentPage){
+        link.classList.add("active");
+    }
 });
 </script>
 
