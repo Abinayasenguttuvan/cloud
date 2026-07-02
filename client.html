@@ -783,6 +783,17 @@ document.querySelectorAll(".sidebar-menu a").forEach(link => {
         link.classList.add("active");
     }
 });
+
+window.onload = function(){
+    const name = localStorage.getItem("userName");
+    const email = localStorage.getItem("userEmail");
+
+    document.getElementById("displayName").innerText =
+        name || "Guest User";
+
+    document.getElementById("displayEmail").innerText =
+        email || "No Email";
+};
 </script>
 
 </body>

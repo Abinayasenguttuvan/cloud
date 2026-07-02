@@ -9,6 +9,11 @@
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+    .sidebar-menu a.active{
+    background:#22c55e;
+    color:white;
+    border-radius:10px;
+}
     
 *{
     margin:0;
@@ -525,15 +530,15 @@ body{
     </div>
 
     <ul class="sidebar-menu">
-        <li><a href="./client.html" ><i class="fas fa-chart-line"></i> Dashboard</a></li>
-        <li><a href="./services-dash.html" class="active"><i class="fas fa-server"></i> My Services</a></li>
-        <li><a href="./storage.html"><i class="fas fa-database"></i> Storage</a></li>
-        <li><a href="./404.html"><i class="fas fa-headset"></i> Active logs</a></li>
-        <li><a href="./404.html"><i class="fas fa-headset"></i> Billing & invoices  </a></li>
-        <li><a href="./404.html"><i class="fas fa-headset"></i> Usage reports</a></li>
-       
-        <li><a href="./404.html"><i class="fas fa-headset"></i> Support</a></li>
-        <li><a href="./index.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="./admin.html" ><i class="fas fa-chart-line"></i>Dashboard</a></li>
+        <li><a href="./client-dash.html"  ><i class="fas fa-users"></i>Clients</a></li>
+        <li><a href="./services-dash.html"class="active"><i class="fas fa-server"></i>Servers</a></li>
+        <li><a href="./profile.html"><i class="fas fa-cog"></i>Profile</a></li>
+        <li><a href="./support.html"><i class="fas fa-cog"></i>Support</a></li>
+        <li><a href="./backup&recovery.html"><i class="fas fa-cog"></i>Backup & recovery</a></li>
+        <!-- <li><a href="./404.html"><i class="fas fa-database"></i>Storage</a></li>
+        <li><a href="./404.html" ><i class="fas fa-cog"></i>Settings</a></li> -->
+        <li><a href="./index.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
     </ul>
 </div>
 
@@ -849,6 +854,27 @@ body{
         }, index*150);
     });
     </script>
-    
+    <script>
+        window.addEventListener("load", function () {
+            const activeMenu = localStorage.getItem("activeMenu");
+        
+            document.querySelectorAll(".sidebar-menu a").forEach(link => {
+                link.classList.remove("active");
+        
+                if (link.dataset.page === activeMenu) {
+                    link.classList.add("active");
+                }
+            });
+        });
+        </script>
+        <script>
+            const menuLinks = document.querySelectorAll(".sidebar-menu a");
+            
+            menuLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    localStorage.setItem("activeMenu", this.dataset.page);
+                });
+            });
+            </script>
     </body>
     </html>

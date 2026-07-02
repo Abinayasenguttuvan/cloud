@@ -606,12 +606,12 @@ table{
     </div>
 
     <ul class="sidebar-menu">
-        <li><a href="./admin.html" class="active"><i class="fas fa-chart-line"></i>Dashboard</a></li>
+        <li><a href="./admin.html" ><i class="fas fa-chart-line"></i>Dashboard</a></li>
         <li><a href="./client-dash.html"  ><i class="fas fa-users"></i>Clients</a></li>
         <li><a href="./services-dash.html"><i class="fas fa-server"></i>Servers</a></li>
         <li><a href="./profile.html"><i class="fas fa-cog"></i>Profile</a></li>
         <li><a href="./support.html"><i class="fas fa-cog"></i>Support</a></li>
-        <li><a href="./backup&recovery.html"><i class="fas fa-cog"></i>Backup & recovery</a></li>
+        <li><a href="./backup&recovery.html" class="active"><i class="fas fa-cog"></i>Backup & recovery</a></li>
         <!-- <li><a href="./404.html"><i class="fas fa-database"></i>Storage</a></li>
         <li><a href="./404.html" ><i class="fas fa-cog"></i>Settings</a></li> -->
         <li><a href="./index.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
@@ -645,232 +645,391 @@ table{
         </div>
     </div>
 
-    <!-- CARDS -->
-    <div class="cards">
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-server"></i></div>
-            <h3>Active Servers</h3>
-            <h2>148</h2>
-            <p>+12 this month</p>
-        </div>
+    <div class="backup-dashboard">
 
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-users"></i></div>
-            <h3>Clients</h3>
-            <h2>2,540</h2>
-            <p>+18% growth</p>
+        <div class="backup-header">
+            <h1>Backup & Recovery</h1>
+            <p>Manage secure backups and disaster recovery plans</p>
         </div>
-
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-            <h3>Bandwidth</h3>
-            <h2>84 TB</h2>
-            <p>Usage today</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-            <h3>Security Score</h3>
-            <h2>99.8%</h2>
-            <p>Excellent</p>
-        </div>
-    </div>
-
-        <!-- CHARTS -->
-        <div class="chart-grid">
-            <div class="chart-box">
-                <h3>Monthly Server Load</h3>
-                <canvas id="barChart"></canvas>
+    
+        <div class="backup-cards">
+            <div class="backup-card">
+                <h3>Last Backup</h3>
+                <h2>Today, 08:30 AM</h2>
             </div>
     
-            <div class="chart-box">
-                <h3>Cloud Usage</h3>
-                <canvas id="pieChart"></canvas>
+            <div class="backup-card">
+                <h3>Backup Status</h3>
+                <h2>Successful</h2>
+            </div>
+    
+            <div class="backup-card">
+                <h3>Recovery Time</h3>
+                <h2>15 Minutes</h2>
+            </div>
+    
+            <div class="backup-card">
+                <h3>Protected Servers</h3>
+                <h2>24 Servers</h2>
             </div>
         </div>
     
-        <!-- TABLE -->
-        <div class="table-box">
-            <h3>Recent Client Activity</h3>
+        <div class="backup-grid">
     
-            <table>
-                <thead>
-                    <tr>
-                        <th>Client</th>
-                        <th>Date</th>
-                        <th>Resources</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
+            <div class="backup-panel">
+                <h3>Scheduled Backups</h3>
+                <ul>
+                    <li>Daily Backup — 12:00 AM</li>
+                    <li>Weekly Full Backup — Sunday</li>
+                    <li>Monthly Archive — 1st Day</li>
+                </ul>
+                <button onclick="window.location.href='./404.html'">Edit Schedule</button>
+            </div>
     
-                <tbody>
-                    <tr>
-                        <td>Microsoft</td>
-                        <td>12 Jun</td>
-                        <td>24 Servers</td>
-                        <td><span class="status confirmed">Active</span></td>
-                    </tr>
+            <div class="backup-panel">
+                <h3>Storage Usage</h3>
+                <div class="progress-box">
+                    <div class="progress-bar"></div>
+                </div>
+                <p>2.8 TB of 5 TB Used</p>
+            </div>
     
-                    <tr>
-                        <td>Google</td>
-                        <td>13 Jun</td>
-                        <td>15 Servers</td>
-                        <td><span class="status pending">Scaling</span></td>
-                    </tr>
+            <div class="backup-panel">
+                <h3>Recovery Actions</h3>
+                <button onclick="window.location.href='./404.html'">Restore Backup</button>
+                <button onclick="window.location.href='./404.html'">Disaster Recovery</button>
+            </div>
+        </div>
     
-                    <tr>
-                        <td>Amazon</td>
-                        <td>14 Jun</td>
-                        <td>50 Servers</td>
-                        <td><span class="status confirmed">Active</span></td>
-                    </tr>
+        <div class="history-section">
+            <h3>Backup History</h3>
     
-                    <tr>
-                        <td>Netflix</td>
-                        <td>15 Jun</td>
-                        <td>10 Servers</td>
-                        <td><span class="status cancelled">Warning</span></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Size</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+                        <tr>
+                            <td>01 Jul 2026</td>
+                            <td>Incremental</td>
+                            <td>Success</td>
+                            <td>120 GB</td>
+                        </tr>
+    
+                        <tr>
+                            <td>30 Jun 2026</td>
+                            <td>Full Backup</td>
+                            <td>Success</td>
+                            <td>1.4 TB</td>
+                        </tr>
+    
+                        <tr>
+                            <td>29 Jun 2026</td>
+                            <td>Incremental</td>
+                            <td>Success</td>
+                            <td>95 GB</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     
     </div>
-    
-    <script>
-    const adminName = localStorage.getItem("userName");
-    const adminEmail = localStorage.getItem("userEmail");
-    
-    document.getElementById("adminName").innerText =
-        adminName ? adminName : "Admin User";
-    
-    document.getElementById("adminEmail").innerText =
-        adminEmail ? adminEmail : "admin@stackly.com";
-    
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-    const closeSidebarBtn = document.getElementById("closeSidebarBtn");
-    const menuBtn = document.getElementById("menuBtn");
-    
-    closeSidebarBtn.addEventListener("click", function(){
-        sidebar.classList.remove("active");
-        overlay.classList.remove("active");
-    });
-    
-    overlay.addEventListener("click", function(){
-        sidebar.classList.remove("active");
-        overlay.classList.remove("active");
-    });
-    
-    menuBtn.addEventListener("click", function(){
-        sidebar.classList.add("active");
-        overlay.classList.add("active");
-    });
-    
-    function logout(){
-        localStorage.removeItem("userName");
-        localStorage.removeItem("userEmail");
-        localStorage.removeItem("loggedUser");
-        sessionStorage.removeItem("loggedUser");
-    
-        const popup = document.createElement("div");
-        popup.className = "logout-popup";
-        popup.innerHTML = `
-            <i class="fas fa-check-circle"></i>
-            Logged out successfully
-        `;
-    
-        document.body.appendChild(popup);
-    
-        setTimeout(() => popup.classList.add("show"), 100);
-    
-        setTimeout(() => {
-            popup.classList.remove("show");
-    
-            setTimeout(() => {
-                window.location.href = "login.html";
-            }, 500);
-        }, 1800);
+
+    <style>
+        .backup-dashboard{
+    padding:25px;
+    background:#000;
+    color:white;
+    min-height:100vh;
+}
+
+.backup-header{
+    margin-bottom:25px;
+}
+
+.backup-header h1{
+    color:#22c55e;
+    margin-bottom:8px;
+}
+
+.backup-header p{
+    color:#cbd5e1;
+}
+
+.backup-cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.backup-card,
+.backup-panel,
+.history-section{
+    background:linear-gradient(145deg,#000,#123d20);
+    border:1px solid rgba(34,197,94,.25);
+    border-radius:20px;
+    padding:22px;
+}
+
+.backup-card h3{
+    color:#cbd5e1;
+    margin-bottom:12px;
+}
+
+.backup-card h2{
+    color:#22c55e;
+}
+
+.backup-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.backup-panel h3,
+.history-section h3{
+    color:#22c55e;
+    margin-bottom:18px;
+}
+
+.backup-panel ul{
+    padding-left:20px;
+    margin-bottom:20px;
+}
+
+.backup-panel li{
+    margin-bottom:12px;
+}
+
+.progress-box{
+    height:18px;
+    width:100%;
+    background:#1e293b;
+    border-radius:50px;
+    overflow:hidden;
+    margin-bottom:15px;
+}
+
+.progress-bar{
+    height:100%;
+    width:56%;
+    background:linear-gradient(90deg,#16a34a,#22c55e);
+}
+
+button{
+    width:100%;
+    margin-top:12px;
+    padding:13px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:14px;
+    text-align:left;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+th{
+    color:#22c55e;
+}
+
+/* Tablet */
+@media (max-width:992px){
+    .backup-cards{
+        grid-template-columns:repeat(2,1fr);
     }
-    
-    /* BAR CHART */
-    const barCtx = document.getElementById("barChart");
-    
-    new Chart(barCtx, {
-        type: "bar",
-        data: {
-            labels: ["Jan","Feb","Mar","Apr","May","Jun"],
-            datasets: [{
-                label: "Server Load",
-                data: [60,75,65,90,85,98],
-                backgroundColor: [
-                    "#00c853",
-                    "#00d960",
-                    "#00e676",
-                    "#00ff99",
-                    "#66ffcc",
-                    "#b2ffe6"
-                ],
-                borderRadius: 10
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "white"
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: { color: "white" }
-                },
-                y: {
-                    ticks: { color: "white" }
-                }
-            }
-        }
-    });
-    
-    /* PIE CHART */
-    const pieCtx = document.getElementById("pieChart");
-    
-    new Chart(pieCtx, {
-        type: "pie",
-        data: {
-            labels: ["Storage","Bandwidth","Database","Compute"],
-            datasets: [{
-                data: [35,25,20,20],
-                backgroundColor: [
-                    "#00c853",
-                    "#00e676",
-                    "#00ff99",
-                    "#b2ffe6"
-                ]
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "white"
-                    }
-                }
-            }
-        }
-    });
-    const menuLinks = document.querySelectorAll(".sidebar-menu a");
 
-menuLinks.forEach(link => {
-    link.addEventListener("click", function () {
-        sidebar.classList.remove("active");
-        overlay.classList.remove("active");
-    });
-});
-    </script>
+    .backup-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* Mobile */
+@media (max-width:576px){
+    .backup-dashboard{
+        padding:15px;
+    }
+
+    .backup-cards{
+        grid-template-columns:1fr;
+    }
+
+    .backup-card,
+    .backup-panel,
+    .history-section{
+        padding:16px;
+        border-radius:16px;
+    }
+
+    th,td{
+        font-size:13px;
+        padding:10px;
+    }
+
+    button{
+        font-size:14px;
+        padding:12px;
+    }
+}
+    </style>
+
+
+    <script>
+        const adminName = localStorage.getItem("userName");
+        const adminEmail = localStorage.getItem("userEmail");
+        
+        document.getElementById("adminName").innerText =
+            adminName ? adminName : "Admin User";
+        
+        document.getElementById("adminEmail").innerText =
+            adminEmail ? adminEmail : "admin@stackly.com";
+        
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+        const menuBtn = document.getElementById("menuBtn");
+        
+        closeSidebarBtn.addEventListener("click", function(){
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+        
+        overlay.addEventListener("click", function(){
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+        
+        menuBtn.addEventListener("click", function(){
+            sidebar.classList.add("active");
+            overlay.classList.add("active");
+        });
+        
+        function logout(){
+            localStorage.removeItem("userName");
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("loggedUser");
+            sessionStorage.removeItem("loggedUser");
+        
+            const popup = document.createElement("div");
+            popup.className = "logout-popup";
+            popup.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                Logged out successfully
+            `;
+        
+            document.body.appendChild(popup);
+        
+            setTimeout(() => popup.classList.add("show"), 100);
+        
+            setTimeout(() => {
+                popup.classList.remove("show");
+        
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 500);
+            }, 1800);
+        }
+        
+        /* BAR CHART */
+        const barCtx = document.getElementById("barChart");
+        
+        new Chart(barCtx, {
+            type: "bar",
+            data: {
+                labels: ["Jan","Feb","Mar","Apr","May","Jun"],
+                datasets: [{
+                    label: "Server Load",
+                    data: [60,75,65,90,85,98],
+                    backgroundColor: [
+                        "#00c853",
+                        "#00d960",
+                        "#00e676",
+                        "#00ff99",
+                        "#66ffcc",
+                        "#b2ffe6"
+                    ],
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "white"
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: "white" }
+                    },
+                    y: {
+                        ticks: { color: "white" }
+                    }
+                }
+            }
+        });
+        
+        /* PIE CHART */
+        const pieCtx = document.getElementById("pieChart");
+        
+        new Chart(pieCtx, {
+            type: "pie",
+            data: {
+                labels: ["Storage","Bandwidth","Database","Compute"],
+                datasets: [{
+                    data: [35,25,20,20],
+                    backgroundColor: [
+                        "#00c853",
+                        "#00e676",
+                        "#00ff99",
+                        "#b2ffe6"
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "white"
+                        }
+                    }
+                }
+            }
+        });
+        const menuLinks = document.querySelectorAll(".sidebar-menu a");
     
-    </body>
-    </html>
+    menuLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+        });
+    });
+        </script>
+        
