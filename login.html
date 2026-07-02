@@ -335,7 +335,7 @@ select option{
     }
 
     .remember-forgot{
-        flex-direction:column;
+        flex-direction:row;
         gap:10px;
         align-items:flex-start;
     }
@@ -372,66 +372,46 @@ select option{
     min-height:16px;
     display:block;
 }
-
-/* SUCCESS POPUP */
-.success-popup{
-    position:fixed;
-    top:40px;
-    left:50%;
-    transform:translateX(-50%) translateY(-120px) scale(0.8);
-    width:340px;
-    max-width:90%;
-    padding:24px 28px;
-    border-radius:24px;
-    text-align:center;
-    z-index:99999;
-
-    background:
-    linear-gradient(145deg,#000000,#052e16);
-
-    border:2px solid #22c55e;
-    box-shadow:
-        0 0 20px rgba(34,197,94,0.35),
-        0 0 50px rgba(34,197,94,0.2);
-
-    opacity:0;
-    transition:all .5s ease;
+.custom-dropdown{
+    position:relative;
+    width:100%;
 }
 
-.success-popup.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0) scale(1);
-}
-
-.popup-icon{
-    width:70px;
-    height:70px;
-    margin:auto;
-    margin-bottom:16px;
-    border-radius:50%;
+.selected{
+    height:48px;
+    padding:0 16px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.1);
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items:center;
-
-    background:linear-gradient(135deg,#16a34a,#22c55e);
-    box-shadow:0 0 30px rgba(34,197,94,.5);
+    cursor:pointer;
 }
 
-.popup-icon i{
-    color:white;
-    font-size:30px;
+.dropdown-options{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    margin-top:6px;
+    background:#1f2937;
+    border-radius:12px;
+    overflow:hidden;
+    display:none;
+    z-index:9999;
 }
 
-.success-popup h3{
-    color:#22c55e;
-    font-size:24px;
-    margin-bottom:8px;
+.dropdown-options div{
+    padding:14px 16px;
+    cursor:pointer;
 }
 
-.success-popup p{
-    color:#d1fae5;
-    font-size:15px;
-    letter-spacing:1px;
+.dropdown-options div:hover{
+    background:#22c55e;
+    color:black;
+}
+.dropdown-options.show{
+    display:block;
 }
 </style>
 </head>
@@ -458,11 +438,20 @@ select option{
         
         <div class="form-group">
             <label>Role</label>
-            <select id="role">
-                <option value="client">Client</option>
-                <option value="admin">Admin</option>
-            </select>
-            <small class="field-error" id="roleError"></small>
+        
+            <div class="custom-dropdown">
+                <div class="selected" onclick="toggleDropdown()">
+                    <span id="selectedRole">Client</span>
+                    <i class="fa fa-chevron-down"></i>
+                </div>
+        
+                <div class="dropdown-options" id="dropdownOptions">
+                    <div onclick="selectRole('client')">Client</div>
+                    <div onclick="selectRole('admin')">Admin</div>
+                </div>
+            </div>
+        
+            <input type="hidden" id="role" value="client">
         </div>
         
         <div class="form-group">
@@ -541,7 +530,12 @@ function togglePassword(){
 
 function login(){
     const name=document.getElementById("name").value.trim();
-    const role=document.getElementById("role").value;
+    const role = document.getElementById("role").value || "client";
+    if(role === "admin"){
+    window.location.href = "./admin.html";
+}else{
+    window.location.href = "./client.html";
+}
     const email=document.getElementById("email").value.trim();
     const password=document.getElementById("password").value.trim();
 
@@ -622,6 +616,18 @@ function showPopup(message, role){
         setTimeout(()=>popup.remove(),500);
     },1500);
 }
+function toggleDropdown(){
+    document.getElementById("dropdownOptions").classList.toggle("show");
+}
+
+function selectRole(role){
+    document.getElementById("role").value = role;
+    document.getElementById("selectedRole").innerText =
+        role.charAt(0).toUpperCase() + role.slice(1);
+
+    document.getElementById("dropdownOptions").classList.remove("show");
+}
+
 </script>
 
 </body>
